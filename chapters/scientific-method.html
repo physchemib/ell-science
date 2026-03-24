@@ -17,6 +17,13 @@
       --highlight: #fff1a8;
       --highlight-border: #f0cc45;
       --banner-url: url('https://raw.githubusercontent.com/physchemib/ell-science/refs/heads/main/images/pixel_art_large_banner_v2.svg');
+      --success: #2d8a4a;
+      --danger: #c24955;
+      --task-tab-dark: #2f3447;
+      --task-panel-3: #e9e9e9;
+      --task-tip-dark: #6b6b6b;
+      --task-focus-dark: #2a2627;
+      --task-soft: #eef3fb;
     }
 
     body.dark {
@@ -30,6 +37,11 @@
       --shadow: 0 16px 42px rgba(0, 0, 0, 0.35);
       --highlight: #5b4b00;
       --highlight-border: #f4d03f;
+      --task-tab-dark: #223045;
+      --task-panel-3: #1b2636;
+      --task-tip-dark: #455468;
+      --task-focus-dark: #111827;
+      --task-soft: #1f2d40;
     }
 
     * { box-sizing: border-box; }
@@ -527,10 +539,274 @@
       margin-top: 14px;
     }
 
+    .exercise-module {
+      margin: 0 22px 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .exercise-head {
+      padding: 18px 22px 12px;
+      border-bottom: 1px solid var(--line);
+    }
+    .exercise-head h2 {
+      margin: 0 0 6px;
+      font-size: 23px;
+    }
+    .exercise-head p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+    .exercise-shell {
+      padding: 16px 14px 14px;
+    }
+    .tab-bar {
+      display: flex;
+      gap: 4px;
+      align-items: end;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+    .tab-btn {
+      border: none;
+      background: var(--task-tab-dark);
+      color: #f3f4f6;
+      padding: 16px 22px;
+      border-radius: 10px 10px 0 0;
+      cursor: pointer;
+      font-size: 18px;
+      font-weight: 700;
+      min-width: 140px;
+      transition: 0.18s ease;
+    }
+    .tab-btn:hover { filter: brightness(1.06); }
+    .tab-btn.active {
+      background: var(--panel);
+      color: var(--text);
+      position: relative;
+      top: 1px;
+      border: 1px solid var(--line);
+      border-bottom-color: var(--panel);
+    }
+    .exercise-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 0 14px 14px 14px;
+      padding: 28px;
+      min-height: 540px;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .task-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .section-title {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .divider {
+      border: none;
+      border-top: 2px solid var(--line);
+      margin: 0 0 16px;
+    }
+    .task-text {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+    .translate-btn {
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      border-radius: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .translate-btn:hover { filter: brightness(1.03); }
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .matrix-header {
+      background: var(--task-soft);
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: center;
+      font-weight: 700;
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .dropzone {
+      min-height: 88px;
+      border: 2px dashed #b9c3d3;
+      border-radius: 12px;
+      background: var(--panel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      text-align: center;
+      transition: 0.18s ease;
+    }
+    body.dark .dropzone { border-color: #56677f; }
+    .dropzone.filled { border-style: solid; }
+    .word-bank-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 8px 0 10px;
+      color: var(--muted);
+    }
+    .word-bank {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 4px 0;
+    }
+    .card-word {
+      padding: 11px 14px;
+      background: var(--panel-2);
+      color: var(--text);
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      cursor: grab;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+      font-size: 14px;
+      line-height: 1.4;
+      user-select: none;
+      max-width: 270px;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .focus-box {
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      margin-bottom: 18px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .focus-head {
+      background: var(--task-tip-dark);
+      color: white;
+      font-weight: 700;
+      padding: 10px 18px;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+      text-transform: uppercase;
+    }
+    .focus-head.dark { background: var(--task-focus-dark); }
+    .focus-body {
+      padding: 14px 18px 16px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text);
+      background: var(--panel-2);
+    }
+    .focus-body em { font-style: italic; }
+    .word-bank-inline {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.7;
+      margin: 12px 0 8px;
+      letter-spacing: 0.2px;
+      color: var(--text);
+    }
+    .question-list { margin-top: 10px; }
+    .question-row {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 10px;
+      align-items: start;
+      margin-bottom: 14px;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--text);
+    }
+    .q-label {
+      font-weight: 700;
+      font-size: 20px;
+    }
+    .drop-inline {
+      min-width: 150px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      vertical-align: middle;
+      min-height: 38px;
+      padding: 4px 8px;
+      border-bottom: 2px dotted var(--text);
+      margin: 0 4px;
+    }
+    .drop-inline.correct {
+      background: rgba(45, 138, 74, 0.1);
+      border-bottom-color: var(--success);
+    }
+    .drop-inline.wrong {
+      background: rgba(194, 73, 85, 0.1);
+      border-bottom-color: var(--danger);
+    }
+    .bank-small .card-word {
+      max-width: none;
+      min-width: 120px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .example-box {
+      margin: 10px 0 14px;
+      padding: 10px 14px;
+      background: var(--panel-2);
+      border-left: 4px solid #8a8a8a;
+      font-size: 16px;
+      line-height: 1.7;
+      border-radius: 10px;
+      color: var(--text);
+    }
+    .sentence-fill { margin-top: 12px; }
+    .fill-row {
+      margin-bottom: 12px;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+
     @media (max-width: 980px) {
       .app { grid-template-columns: 1fr; }
       .setup-body, .settings-grid, .legend { grid-template-columns: 1fr; }
       .hero, .setup-head { min-height: 130px; }
+    }
+    @media (max-width: 900px) {
+      .matrix-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .matrix-grid { grid-template-columns: 1fr; }
+      .exercise-panel { padding: 20px; }
+      .tab-btn { min-width: 100%; border-radius: 10px; }
+      .tab-bar { display: grid; grid-template-columns: 1fr; }
+      .task-head { flex-direction: column; align-items: stretch; }
+      .question-row { grid-template-columns: 1fr; }
     }
 
     @media print {
@@ -588,11 +864,7 @@
         <div class="poster-inner">
           <div class="poster-svg-shell">
             <svg viewBox="0 0 5000 7084" aria-label="Interactive scientific method poster">
-              <image
-                href="https://raw.githubusercontent.com/physchemib/ell-science/refs/heads/main/images/Scientific%20method%20to%20Website%20SVG.svg"
-                x="0" y="0" width="5000" height="7084"
-                preserveAspectRatio="xMidYMid meet"
-              />
+              <image href="https://raw.githubusercontent.com/physchemib/ell-science/refs/heads/main/images/Scientific%20method%20to%20Website%20SVG.svg" x="0" y="0" width="5000" height="7084" preserveAspectRatio="xMidYMid meet" />
               <rect class="poster-hotspot" data-key="question" x="1660" y="540" width="1610" height="485" rx="28" />
               <rect class="poster-hotspot" data-key="procedure" x="1660" y="1210" width="1610" height="485" rx="28" />
               <rect class="poster-hotspot" data-key="research" x="1660" y="1885" width="1610" height="485" rx="28" />
@@ -609,6 +881,206 @@
             </svg>
           </div>
           <div class="poster-note">Use the same language and voice settings as the rest of the chapter.</div>
+        </div>
+      </div>
+
+      <div class="exercise-module" id="exerciseModule">
+        <div class="exercise-head">
+          <h2>Practice activities</h2>
+          <p>These exercises use the same support language chosen in Settings. Task descriptions, language tips, and examples can be translated with the buttons.</p>
+        </div>
+        <div class="exercise-shell">
+          <div class="tab-bar">
+            <button class="tab-btn active" data-tab="task1">Exercise 1</button>
+            <button class="tab-btn" data-tab="task2">Exercise 2</button>
+            <button class="tab-btn" data-tab="task3">Exercise 3</button>
+            <button class="tab-btn" data-tab="task4">Exercise 4</button>
+            <button class="tab-btn" data-tab="task5">Exercise 5</button>
+          </div>
+
+          <div class="exercise-panel">
+            <div class="tab-content active" id="task1">
+              <div class="task-head">
+                <h2 class="section-title">Match the scientific steps</h2>
+                <button class="translate-btn" data-target="desc1">Translate task</button>
+              </div>
+              <hr class="divider" />
+              <p class="task-text" id="desc1" data-original="Drag each card to the correct step of the scientific method.">Drag each card to the correct step of the scientific method.</p>
+
+              <div class="matrix-grid">
+                <div class="matrix-header">Observation</div>
+                <div class="matrix-header">Hypothesis</div>
+                <div class="matrix-header">Experiment</div>
+                <div class="matrix-header">Conclusion</div>
+
+                <div class="dropzone" data-answer="observation"></div>
+                <div class="dropzone" data-answer="hypothesis"></div>
+                <div class="dropzone" data-answer="experiment"></div>
+                <div class="dropzone" data-answer="conclusion"></div>
+              </div>
+
+              <div class="word-bank-title">Cards</div>
+              <div class="word-bank" id="bank1">
+                <div class="card-word" draggable="true" data-type="observation">Plants near the window look taller.</div>
+                <div class="card-word" draggable="true" data-type="hypothesis">If plants get more light, they will grow faster.</div>
+                <div class="card-word" draggable="true" data-type="experiment">Grow one plant in sunlight and one in shade.</div>
+                <div class="card-word" draggable="true" data-type="conclusion">The plant in sunlight grew more, so the evidence supports the idea.</div>
+              </div>
+
+              <div class="controls">
+                <button class="btn btn-primary" onclick="checkAnswers('task1')">Check</button>
+                <button class="btn btn-secondary" onclick="resetTask('task1','bank1')">Reset</button>
+              </div>
+            </div>
+
+            <div class="tab-content" id="task2">
+              <div class="task-head">
+                <h2 class="section-title">Order the stages</h2>
+                <button class="translate-btn" data-target="desc2">Translate task</button>
+              </div>
+              <hr class="divider" />
+              <p class="task-text" id="desc2" data-original="Put the stages of the scientific method in the correct order from beginning to end.">Put the stages of the scientific method in the correct order from beginning to end.</p>
+
+              <div class="matrix-grid">
+                <div class="matrix-header">Step 1</div>
+                <div class="matrix-header">Step 2</div>
+                <div class="matrix-header">Step 3</div>
+                <div class="matrix-header">Step 4</div>
+
+                <div class="dropzone" data-answer="Observation"></div>
+                <div class="dropzone" data-answer="Hypothesis"></div>
+                <div class="dropzone" data-answer="Experiment"></div>
+                <div class="dropzone" data-answer="Conclusion"></div>
+              </div>
+
+              <div class="word-bank-title">Cards</div>
+              <div class="word-bank" id="bank2">
+                <div class="card-word" draggable="true" data-label="Conclusion">Conclusion</div>
+                <div class="card-word" draggable="true" data-label="Observation">Observation</div>
+                <div class="card-word" draggable="true" data-label="Experiment">Experiment</div>
+                <div class="card-word" draggable="true" data-label="Hypothesis">Hypothesis</div>
+              </div>
+
+              <div class="controls">
+                <button class="btn btn-primary" onclick="checkAnswers('task2')">Check</button>
+                <button class="btn btn-secondary" onclick="resetTask('task2','bank2')">Reset</button>
+              </div>
+            </div>
+
+            <div class="tab-content" id="task3">
+              <div class="task-head">
+                <h2 class="section-title">Sort the statements</h2>
+                <button class="translate-btn" data-target="desc3">Translate task</button>
+              </div>
+              <hr class="divider" />
+              <p class="task-text" id="desc3" data-original="Sort each statement into the correct scientific category.">Sort each statement into the correct scientific category.</p>
+
+              <div class="matrix-grid">
+                <div class="matrix-header">Question</div>
+                <div class="matrix-header">Evidence</div>
+                <div class="matrix-header">Prediction</div>
+                <div class="matrix-header">Result</div>
+
+                <div class="dropzone" data-answer="question"></div>
+                <div class="dropzone" data-answer="evidence"></div>
+                <div class="dropzone" data-answer="prediction"></div>
+                <div class="dropzone" data-answer="result"></div>
+              </div>
+
+              <div class="word-bank-title">Cards</div>
+              <div class="word-bank" id="bank3">
+                <div class="card-word" draggable="true" data-type="prediction">If the temperature rises, the sugar will dissolve faster.</div>
+                <div class="card-word" draggable="true" data-type="question">Does warmer water dissolve sugar more quickly?</div>
+                <div class="card-word" draggable="true" data-type="evidence">The warm water dissolved all sugar in 40 seconds.</div>
+                <div class="card-word" draggable="true" data-type="result">The results showed that warm water dissolved sugar faster.</div>
+              </div>
+
+              <div class="controls">
+                <button class="btn btn-primary" onclick="checkAnswers('task3')">Check</button>
+                <button class="btn btn-secondary" onclick="resetTask('task3','bank3')">Reset</button>
+              </div>
+            </div>
+
+            <div class="tab-content" id="task4">
+              <div class="task-head">
+                <h2 class="section-title">Comparing scientific ideas</h2>
+                <button class="translate-btn" data-target="desc4" data-extra="tip4">Translate task</button>
+              </div>
+              <hr class="divider" />
+              <p class="task-text" id="desc4" data-original="Complete the sentences using the words in the box. Each word should be used only once.">Complete the sentences using the words in the box. Each word should be used only once.</p>
+
+              <div class="focus-box">
+                <div class="focus-head">Language tip</div>
+                <div class="focus-body" id="tip4" data-original="You can compare scientific ideas, results, and methods using comparative words. For example: stronger evidence, more reliable results, or a clearer conclusion.">You can compare scientific ideas, results, and methods using comparative words. For example: stronger evidence, more reliable results, or a clearer conclusion.</div>
+              </div>
+
+              <div class="word-bank-inline">clearer &nbsp;&nbsp; more &nbsp;&nbsp; stronger &nbsp;&nbsp; longer &nbsp;&nbsp; less<br>better &nbsp;&nbsp; carefully &nbsp;&nbsp; reliable</div>
+
+              <div class="word-bank bank-small" id="bank4" style="justify-content:center; margin-bottom:18px;">
+                <div class="card-word" draggable="true" data-word="stronger">stronger</div>
+                <div class="card-word" draggable="true" data-word="less">less</div>
+                <div class="card-word" draggable="true" data-word="clearer">clearer</div>
+                <div class="card-word" draggable="true" data-word="longer">longer</div>
+                <div class="card-word" draggable="true" data-word="more">more</div>
+                <div class="card-word" draggable="true" data-word="better">better</div>
+                <div class="card-word" draggable="true" data-word="carefully">carefully</div>
+                <div class="card-word" draggable="true" data-word="reliable">reliable</div>
+              </div>
+
+              <div class="question-list">
+                <div class="question-row"><div class="q-label">i</div><div>Evidence from repeated tests is usually <span class="drop-inline fillblank" data-answer="stronger"></span> than evidence from one test only.</div></div>
+                <div class="question-row"><div class="q-label">ii</div><div>A vague hypothesis is often <span class="drop-inline fillblank" data-answer="less"></span> useful than a focused one.</div></div>
+                <div class="question-row"><div class="q-label">iii</div><div>A <span class="drop-inline fillblank" data-answer="clearer"></span> question usually helps students design a better investigation.</div></div>
+                <div class="question-row"><div class="q-label">iv</div><div>If students observe for a <span class="drop-inline fillblank" data-answer="longer"></span> time, they may notice more patterns.</div></div>
+                <div class="question-row"><div class="q-label">v</div><div>Scientists collect <span class="drop-inline fillblank" data-answer="more"></span> data when they want results to be more <span class="drop-inline fillblank" data-answer="reliable"></span>.</div></div>
+                <div class="question-row"><div class="q-label">vi</div><div>When students measure <span class="drop-inline fillblank" data-answer="carefully"></span>, they often get <span class="drop-inline fillblank" data-answer="better"></span> results.</div></div>
+              </div>
+
+              <div class="controls">
+                <button class="btn btn-primary" onclick="checkFillBlanks('task4')">Check</button>
+                <button class="btn btn-secondary" onclick="resetFillBlanks('task4','bank4')">Reset</button>
+              </div>
+            </div>
+
+            <div class="tab-content" id="task5">
+              <div class="task-head">
+                <h2 class="section-title">Linking scientific statements</h2>
+                <button class="translate-btn" data-target="desc5" data-extra="focus5,example5">Translate task</button>
+              </div>
+              <hr class="divider" />
+              <p class="task-text" id="desc5" data-original="Complete each sentence using because, so, or which suggests that.">Complete each sentence using <em>because</em>, <em>so</em>, or <em>which suggests that</em>.</p>
+
+              <div class="focus-box">
+                <div class="focus-head dark">Language focus</div>
+                <div class="focus-body" id="focus5" data-original="Use so when a fact comes before the consequence. Use because when the consequence comes before the fact. Use which suggests that when an observation leads to a possible explanation or hypothesis.">Use <em>so</em> when a fact comes before the consequence. Use <em>because</em> when the consequence comes before the fact. Use <em>which suggests that</em> when an observation leads to a possible explanation or hypothesis.</div>
+              </div>
+
+              <div class="example-box" id="example5" data-original="The temperature increased during the test, so the reaction happened faster.">The temperature increased during the test, <strong>so</strong> the reaction happened faster.</div>
+
+              <div class="word-bank bank-small" id="bank5" style="justify-content:center; margin-bottom:18px;">
+                <div class="card-word" draggable="true" data-word="so">so</div>
+                <div class="card-word" draggable="true" data-word="because">because</div>
+                <div class="card-word" draggable="true" data-word="which suggests that">which suggests that</div>
+                <div class="card-word" draggable="true" data-word="so">so</div>
+                <div class="card-word" draggable="true" data-word="because">because</div>
+                <div class="card-word" draggable="true" data-word="which suggests that">which suggests that</div>
+              </div>
+
+              <div class="sentence-fill">
+                <div class="fill-row">a) The mass stayed the same, <span class="drop-inline fillblank" data-answer="so"></span> no material was lost during the investigation.</div>
+                <div class="fill-row">b) The conclusion is convincing <span class="drop-inline fillblank" data-answer="because"></span> it is supported by repeated measurements.</div>
+                <div class="fill-row">c) The liquid changed colour during the test, <span class="drop-inline fillblank" data-answer="which suggests that"></span> a chemical change may have happened.</div>
+                <div class="fill-row">d) The students repeated the experiment several times, <span class="drop-inline fillblank" data-answer="so"></span> their data became more reliable.</div>
+                <div class="fill-row">e) The results may be inaccurate <span class="drop-inline fillblank" data-answer="because"></span> the thermometer was not read at eye level.</div>
+                <div class="fill-row">f) The solid dissolved faster in warm water, <span class="drop-inline fillblank" data-answer="which suggests that"></span> temperature affects the rate of dissolving.</div>
+              </div>
+
+              <div class="controls">
+                <button class="btn btn-primary" onclick="checkFillBlanks('task5')">Check</button>
+                <button class="btn btn-secondary" onclick="resetFillBlanks('task5','bank5')">Reset</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -792,58 +1264,16 @@
     const GOOGLE_LANG_MAP = { ru: 'ru', zh: 'zh-CN', ja: 'ja', ar: 'ar', he: 'iw', uk: 'uk', es: 'es' };
 
     const glossary = {
-      investigation: {
-        pos: 'noun',
-        beginner: 'a careful study or test to find an answer',
-        intermediate: 'a planned scientific study used to answer a question',
-        advanced: 'a systematic inquiry carried out to examine a question or problem',
-        translations: { ru: 'исследование', zh: '探究', ja: '調査', ar: 'تحقيق', he: 'חקירה', uk: 'дослідження', es: 'investigación' },
-        explanationTranslations: { ru: 'Тщательное исследование или проверка, чтобы найти ответ.', zh: '为了找到答案而进行的仔细研究或测试。', ja: '答えを見つけるための注意深い調査やテスト。', ar: 'دراسة أو اختبار دقيق للعثور على إجابة.', he: 'בדיקה או חקירה מסודרת כדי למצוא תשובה.', uk: 'Ретельне дослідження або перевірка, щоб знайти відповідь.', es: 'Un estudio o prueba cuidadosa para encontrar una respuesta.' }
-      },
-      observation: {
-        pos: 'noun', beginner: 'something you notice using your senses or tools', intermediate: 'information noticed carefully through senses or instruments', advanced: 'a careful noticing of a phenomenon using senses or instruments',
-        translations: { ru: 'наблюдение', zh: '观察', ja: '観察', ar: 'ملاحظة', he: 'תצפית', uk: 'спостереження', es: 'observación' },
-        explanationTranslations: { ru: 'То, что вы замечаете с помощью органов чувств или приборов.', zh: '你用感官或工具注意到的事情。', ja: '感覚や道具を使って気づくこと。', ar: 'شيء تلاحظه باستخدام حواسك أو أدواتك.', he: 'משהו שמבחינים בו בעזרת החושים או כלים.', uk: 'Те, що ви помічаєте за допомогою органів чуття або приладів.', es: 'Lo que notas usando tus sentidos o herramientas.' }
-      },
-      hypothesis: {
-        pos: 'noun', beginner: 'a possible explanation that can be tested', intermediate: 'a testable explanation for an observation or question', advanced: 'a proposed explanation that can be tested with evidence',
-        translations: { ru: 'гипотеза', zh: '假设', ja: '仮説', ar: 'فرضية', he: 'השערה', uk: 'гіпотеза', es: 'hipótesis' },
-        explanationTranslations: { ru: 'Возможное объяснение, которое можно проверить.', zh: '一个可以被检验的可能解释。', ja: '実際に確かめることができる説明。', ar: 'تفسير محتمل يمكن اختباره.', he: 'הסבר אפשרי שאפשר לבדוק.', uk: 'Можливе пояснення, яке можна перевірити.', es: 'Una explicación posible que se puede comprobar.' }
-      },
-      prediction: {
-        pos: 'noun', beginner: 'what you think will happen next', intermediate: 'a statement about what should happen if an idea is correct', advanced: 'an expected result based on a hypothesis',
-        translations: { ru: 'предсказание', zh: '预测', ja: '予測', ar: 'تنبؤ', he: 'תחזית', uk: 'передбачення', es: 'predicción' },
-        explanationTranslations: { ru: 'То, что, по вашему мнению, произойдёт дальше.', zh: '你认为接下来会发生的事情。', ja: '次に何が起こるかについての考え。', ar: 'ما تعتقد أنه سيحدث بعد ذلك.', he: 'מה שחושבים שיקרה בהמשך.', uk: 'Те, що, на вашу думку, станеться далі.', es: 'Lo que crees que ocurrirá después.' }
-      },
-      experiment: {
-        pos: 'noun', beginner: 'a careful test used to check an idea', intermediate: 'a controlled test designed to collect evidence', advanced: 'a controlled procedure used to test a hypothesis',
-        translations: { ru: 'эксперимент', zh: '实验', ja: '実験', ar: 'تجربة', he: 'ניסוי', uk: 'експеримент', es: 'experimento' },
-        explanationTranslations: { ru: 'Тщательная проверка, чтобы выяснить, верна ли идея.', zh: '用来检验一个想法是否正确的仔细测试。', ja: '考えが正しいかどうかを確かめるための注意深いテスト。', ar: 'اختبار دقيق لمعرفة ما إذا كانت الفكرة صحيحة.', he: 'בדיקה מסודרת כדי לבדוק אם הרעיון נכון.', uk: 'Ретельна перевірка, щоб з’ясувати, чи правильна ідея.', es: 'Una prueba cuidadosa para comprobar si la idea es correcta.' }
-      },
-      evidence: {
-        pos: 'noun', beginner: 'facts or results that help you decide', intermediate: 'data or observations used to support or challenge an idea', advanced: 'observations or measurements used to evaluate a claim',
-        translations: { ru: 'доказательства', zh: '证据', ja: '証拠', ar: 'أدلة', he: 'ראיות', uk: 'докази', es: 'evidencia' },
-        explanationTranslations: { ru: 'Факты или результаты, которые помогают принять решение.', zh: '帮助你做出判断的事实或结果。', ja: '判断するのに役立つ事実や結果。', ar: 'حقائق أو نتائج تساعدك على اتخاذ قرار.', he: 'עובדות או תוצאות שעוזרות להחליט.', uk: 'Факти або результати, які допомагають зробити висновок.', es: 'Hechos o resultados que te ayudan a decidir.' }
-      },
-      conclusion: {
-        pos: 'noun', beginner: 'the final answer you make from results', intermediate: 'a decision reached after analysing evidence', advanced: 'a reasoned judgement based on the collected evidence',
-        translations: { ru: 'вывод', zh: '结论', ja: '結論', ar: 'استنتاج', he: 'מסקנה', uk: 'висновок', es: 'conclusión' },
-        explanationTranslations: { ru: 'Окончательный вывод, который вы делаете на основе результатов.', zh: '根据结果得出的最终判断。', ja: '結果にもとづいて出す最終的な考え。', ar: 'النتيجة النهائية التي تتوصل إليها من النتائج.', he: 'המסקנה הסופית שמסיקים מן התוצאות.', uk: 'Підсумковий висновок, який роблять на основі результатів.', es: 'La respuesta final que haces a partir de los resultados.' }
-      }
+      investigation: { pos: 'noun', beginner: 'a careful study or test to find an answer', intermediate: 'a planned scientific study used to answer a question', advanced: 'a systematic inquiry carried out to examine a question or problem', translations: { ru: 'исследование', zh: '探究', ja: '調査', ar: 'تحقيق', he: 'חקירה', uk: 'дослідження', es: 'investigación' }, explanationTranslations: { ru: 'Тщательное исследование или проверка, чтобы найти ответ.', zh: '为了找到答案而进行的仔细研究或测试。', ja: '答えを見つけるための注意深い調査やテスト。', ar: 'دراسة أو اختبار دقيق للعثور على إجابة.', he: 'בדיקה או חקירה מסודרת כדי למצוא תשובה.', uk: 'Ретельне дослідження або перевірка, щоб знайти відповідь.', es: 'Un estudio o prueba cuidadosa para encontrar una respuesta.' } },
+      observation: { pos: 'noun', beginner: 'something you notice using your senses or tools', intermediate: 'information noticed carefully through senses or instruments', advanced: 'a careful noticing of a phenomenon using senses or instruments', translations: { ru: 'наблюдение', zh: '观察', ja: '観察', ar: 'ملاحظة', he: 'תצפית', uk: 'спостереження', es: 'observación' }, explanationTranslations: { ru: 'То, что вы замечаете с помощью органов чувств или приборов.', zh: '你用感官或工具注意到的事情。', ja: '感覚や道具を使って気づくこと。', ar: 'شيء تلاحظه باستخدام حواسك أو أدواتك.', he: 'משהו שמבחינים בו בעזרת החושים או כלים.', uk: 'Те, що ви помічаєте за допомогою органів чуття або приладів.', es: 'Lo que notas usando tus sentidos o herramientas.' } },
+      hypothesis: { pos: 'noun', beginner: 'a possible explanation that can be tested', intermediate: 'a testable explanation for an observation or question', advanced: 'a proposed explanation that can be tested with evidence', translations: { ru: 'гипотеза', zh: '假设', ja: '仮説', ar: 'فرضية', he: 'השערה', uk: 'гіпотеза', es: 'hipótesis' }, explanationTranslations: { ru: 'Возможное объяснение, которое можно проверить.', zh: '一个可以被检验的可能解释。', ja: '実際に確かめることができる説明。', ar: 'تفسير محتمل يمكن اختباره.', he: 'הסבר אפשרי שאפשר לבדוק.', uk: 'Можливе пояснення, яке можна перевірити.', es: 'Una explicación posible que se puede comprobar.' } },
+      prediction: { pos: 'noun', beginner: 'what you think will happen next', intermediate: 'a statement about what should happen if an idea is correct', advanced: 'an expected result based on a hypothesis', translations: { ru: 'предсказание', zh: '预测', ja: '予測', ar: 'تنبؤ', he: 'תחזית', uk: 'передбачення', es: 'predicción' }, explanationTranslations: { ru: 'То, что, по вашему мнению, произойдёт дальше.', zh: '你认为接下来会发生的事情。', ja: '次に何が起こるかについての考え。', ar: 'ما تعتقد أنه سيحدث بعد ذلك.', he: 'מה שחושבים שיקרה בהמשך.', uk: 'Те, що, на вашу думку, станеться далі.', es: 'Lo que crees que ocurrirá después.' } },
+      experiment: { pos: 'noun', beginner: 'a careful test used to check an idea', intermediate: 'a controlled test designed to collect evidence', advanced: 'a controlled procedure used to test a hypothesis', translations: { ru: 'эксперимент', zh: '实验', ja: '実験', ar: 'تجربة', he: 'ניסוי', uk: 'експеримент', es: 'experimento' }, explanationTranslations: { ru: 'Тщательная проверка, чтобы выяснить, верна ли идея.', zh: '用来检验一个想法是否正确的仔细测试。', ja: '考えが正しいかどうかを確かめるための注意深いテスト。', ar: 'اختبار دقيق لمعرفة ما إذا كانت الفكرة صحيحة.', he: 'בדיקה מסודרת כדי לבדוק אם הרעיון נכון.', uk: 'Ретельна перевірка, щоб з’ясувати, чи правильна ідея.', es: 'Una prueba cuidadosa para comprobar si la idea es correcta.' } },
+      evidence: { pos: 'noun', beginner: 'facts or results that help you decide', intermediate: 'data or observations used to support or challenge an idea', advanced: 'observations or measurements used to evaluate a claim', translations: { ru: 'доказательства', zh: '证据', ja: '証拠', ar: 'أدلة', he: 'ראיות', uk: 'докази', es: 'evidencia' }, explanationTranslations: { ru: 'Факты или результаты, которые помогают принять решение.', zh: '帮助你做出判断的事实或结果。', ja: '判断するのに役立つ事実や結果。', ar: 'حقائق أو نتائج تساعدك على اتخاذ قرار.', he: 'עובדות או תוצאות שעוזרות להחליט.', uk: 'Факти або результати, які допомагають зробити висновок.', es: 'Hechos o resultados que te ayudan a decidir.' } },
+      conclusion: { pos: 'noun', beginner: 'the final answer you make from results', intermediate: 'a decision reached after analysing evidence', advanced: 'a reasoned judgement based on the collected evidence', translations: { ru: 'вывод', zh: '结论', ja: '結論', ar: 'استنتاج', he: 'מסקנה', uk: 'висновок', es: 'conclusión' }, explanationTranslations: { ru: 'Окончательный вывод, который вы делаете на основе результатов.', zh: '根据结果得出的最终判断。', ja: '結果にもとづいて出す最終的な考え。', ar: 'النتيجة النهائية التي تتوصل إليها من النتائج.', he: 'המסקנה הסופית שמסיקים מן התוצאות.', uk: 'Підсумковий висновок, який роблять на основі результатів.', es: 'La respuesta final que haces a partir de los resultados.' } }
     };
 
-    const appState = {
-      language: 'ru',
-      level: 'beginner',
-      voicePreference: 'default',
-      theme: 'light',
-      isReading: false,
-      selectedParagraphId: '',
-      fontScale: 1,
-      readingRate: 1,
-      myWords: []
-    };
-
+    const appState = { language: 'ru', level: 'beginner', voicePreference: 'default', theme: 'light', isReading: false, selectedParagraphId: '', fontScale: 1, readingRate: 1, myWords: [] };
     const languageNames = { ru: 'Russian', zh: 'Mandarin Chinese', ja: 'Japanese', ar: 'Arabic', he: 'Hebrew', uk: 'Ukrainian', es: 'Spanish' };
     const levelNames = { beginner: 'Total beginner', intermediate: 'Intermediate', advanced: 'Advanced' };
     const rtlLanguages = new Set(['ar', 'he']);
@@ -856,7 +1286,6 @@
     const voiceSelect = document.getElementById('voiceSelect');
     const themeSelect = document.getElementById('themeSelect');
     const startBtn = document.getElementById('startBtn');
-
     const settingsOverlay = document.getElementById('settingsOverlay');
     const closeSettingsBtn = document.getElementById('closeSettingsBtn');
     const quickLanguageSelect = document.getElementById('quickLanguageSelect');
@@ -866,7 +1295,6 @@
     const openSettingsBtn = document.getElementById('openSettingsBtn');
     const speedRange = document.getElementById('speedRange');
     const speedValue = document.getElementById('speedValue');
-
     const glossaryList = document.getElementById('glossaryList');
     const glossarySearch = document.getElementById('glossarySearch');
     const activeSettings = document.getElementById('activeSettings');
@@ -887,18 +1315,8 @@
     const posterPopup = document.getElementById('posterPopup');
 
     function saveSettings() {
-      localStorage.setItem('ealScienceSettings', JSON.stringify({
-        language: appState.language,
-        level: appState.level,
-        voicePreference: appState.voicePreference,
-        theme: appState.theme,
-        selectedParagraphId: appState.selectedParagraphId,
-        fontScale: appState.fontScale,
-        readingRate: appState.readingRate,
-        myWords: appState.myWords
-      }));
+      localStorage.setItem('ealScienceSettings', JSON.stringify({ language: appState.language, level: appState.level, voicePreference: appState.voicePreference, theme: appState.theme, selectedParagraphId: appState.selectedParagraphId, fontScale: appState.fontScale, readingRate: appState.readingRate, myWords: appState.myWords }));
     }
-
     function loadSettings() {
       const raw = localStorage.getItem('ealScienceSettings');
       if (!raw) return;
@@ -914,17 +1332,12 @@
         if (Array.isArray(saved.myWords)) appState.myWords = saved.myWords;
       } catch (e) {}
     }
-
-    function applyTheme() {
-      document.body.classList.toggle('dark', appState.theme === 'dark');
-    }
-
+    function applyTheme() { document.body.classList.toggle('dark', appState.theme === 'dark'); }
     function updateSpeedLabel() {
       const value = Number(appState.readingRate).toFixed(1);
       const names = { '0.7': 'Slow', '0.8': 'Slow', '0.9': 'Gentle', '1.0': 'Normal', '1.1': 'Normal+', '1.2': 'Fast', '1.3': 'Fast', '1.4': 'Very fast' };
       speedValue.textContent = `${names[value] || 'Custom'} (${value}×)`;
     }
-
     function updateSettingsChips() {
       activeSettings.innerHTML = `
         <span class="chip">Language: ${languageNames[appState.language]}</span>
@@ -935,126 +1348,56 @@
         <span class="chip">Speed: ${appState.readingRate.toFixed(1)}×</span>
       `;
     }
-
-    function syncForm() {
-      languageSelect.value = appState.language;
-      levelSelect.value = appState.level;
-      voiceSelect.value = appState.voicePreference;
-      themeSelect.value = appState.theme;
-    }
-
-    function syncQuickSettings() {
-      quickLanguageSelect.value = appState.language;
-      quickLevelSelect.value = appState.level;
-      quickVoiceSelect.value = appState.voicePreference;
-      quickThemeSelect.value = appState.theme;
-      speedRange.value = appState.readingRate;
-      updateSpeedLabel();
-    }
-
+    function syncForm() { languageSelect.value = appState.language; levelSelect.value = appState.level; voiceSelect.value = appState.voicePreference; themeSelect.value = appState.theme; }
+    function syncQuickSettings() { quickLanguageSelect.value = appState.language; quickLevelSelect.value = appState.level; quickVoiceSelect.value = appState.voicePreference; quickThemeSelect.value = appState.theme; speedRange.value = appState.readingRate; updateSpeedLabel(); }
     function getDefinition(term) { return glossary[term] ? glossary[term][appState.level] : ''; }
     function getTranslation(term) { return glossary[term] ? glossary[term].translations[appState.language] : ''; }
     function getTranslatedDefinition(term) { return glossary[term] ? glossary[term].explanationTranslations[appState.language] : ''; }
-
-    function sentenceWrap(paragraphId, index, html) {
-      return `<span class="sentence-chunk" data-paragraph="${paragraphId}" data-index="${index}">${html}</span>`;
-    }
+    function sentenceWrap(paragraphId, index, html) { return `<span class="sentence-chunk" data-paragraph="${paragraphId}" data-index="${index}">${html}</span>`; }
 
     function renderChapterText() {
       const p1 = document.getElementById('p1');
       const p2 = document.getElementById('p2');
       const p3 = document.getElementById('p3');
-
       if (appState.level === 'beginner') {
-        p1.innerHTML = [
-          sentenceWrap('p1', 0, 'Science is a way to learn about the world.'),
-          sentenceWrap('p1', 1, 'A scientific <span class="word" data-term="investigation">investigation</span><button class="speak-inline" data-speak="investigation" aria-label="Hear investigation">🔊</button> is a planned method for asking a question and checking the answer with evidence.'),
-          sentenceWrap('p1', 2, 'Scientists often start with an <span class="word" data-term="observation">observation</span><button class="speak-inline" data-speak="observation" aria-label="Hear observation">🔊</button>.'),
-          sentenceWrap('p1', 3, 'This means they notice something carefully.'),
-          sentenceWrap('p1', 4, 'Then they ask a question and write a <span class="word" data-term="hypothesis">hypothesis</span><button class="speak-inline" data-speak="hypothesis" aria-label="Hear hypothesis">🔊</button>, which is a possible explanation that can be tested.')
-        ].join(' ');
-        p2.innerHTML = [
-          sentenceWrap('p2', 0, 'After that, scientists make a <span class="word" data-term="prediction">prediction</span><button class="speak-inline" data-speak="prediction" aria-label="Hear prediction">🔊</button>.'),
-          sentenceWrap('p2', 1, 'This is what they think will happen if the hypothesis is correct.'),
-          sentenceWrap('p2', 2, 'Then they do an <span class="word" data-term="experiment">experiment</span><button class="speak-inline" data-speak="experiment" aria-label="Hear experiment">🔊</button> or another careful test.'),
-          sentenceWrap('p2', 3, 'During the test, they collect <span class="word" data-term="evidence">evidence</span><button class="speak-inline" data-speak="evidence" aria-label="Hear evidence">🔊</button> such as measurements, notes, or results.'),
-          sentenceWrap('p2', 4, 'At the end, they study the evidence and write a <span class="word" data-term="conclusion">conclusion</span><button class="speak-inline" data-speak="conclusion" aria-label="Hear conclusion">🔊</button>.')
-        ].join(' ');
-        p3.innerHTML = [
-          sentenceWrap('p3', 0, 'In science, ideas can be checked many times.'),
-          sentenceWrap('p3', 1, 'Other scientists can repeat the investigation.'),
-          sentenceWrap('p3', 2, 'If new evidence appears, the explanation can change or improve.')
-        ].join(' ');
+        p1.innerHTML = [sentenceWrap('p1', 0, 'Science is a way to learn about the world.'), sentenceWrap('p1', 1, 'A scientific <span class="word" data-term="investigation">investigation</span><button class="speak-inline" data-speak="investigation" aria-label="Hear investigation">🔊</button> is a planned method for asking a question and checking the answer with evidence.'), sentenceWrap('p1', 2, 'Scientists often start with an <span class="word" data-term="observation">observation</span><button class="speak-inline" data-speak="observation" aria-label="Hear observation">🔊</button>.'), sentenceWrap('p1', 3, 'This means they notice something carefully.'), sentenceWrap('p1', 4, 'Then they ask a question and write a <span class="word" data-term="hypothesis">hypothesis</span><button class="speak-inline" data-speak="hypothesis" aria-label="Hear hypothesis">🔊</button>, which is a possible explanation that can be tested.')].join(' ');
+        p2.innerHTML = [sentenceWrap('p2', 0, 'After that, scientists make a <span class="word" data-term="prediction">prediction</span><button class="speak-inline" data-speak="prediction" aria-label="Hear prediction">🔊</button>.'), sentenceWrap('p2', 1, 'This is what they think will happen if the hypothesis is correct.'), sentenceWrap('p2', 2, 'Then they do an <span class="word" data-term="experiment">experiment</span><button class="speak-inline" data-speak="experiment" aria-label="Hear experiment">🔊</button> or another careful test.'), sentenceWrap('p2', 3, 'During the test, they collect <span class="word" data-term="evidence">evidence</span><button class="speak-inline" data-speak="evidence" aria-label="Hear evidence">🔊</button> such as measurements, notes, or results.'), sentenceWrap('p2', 4, 'At the end, they study the evidence and write a <span class="word" data-term="conclusion">conclusion</span><button class="speak-inline" data-speak="conclusion" aria-label="Hear conclusion">🔊</button>.')].join(' ');
+        p3.innerHTML = [sentenceWrap('p3', 0, 'In science, ideas can be checked many times.'), sentenceWrap('p3', 1, 'Other scientists can repeat the investigation.'), sentenceWrap('p3', 2, 'If new evidence appears, the explanation can change or improve.')].join(' ');
       } else if (appState.level === 'intermediate') {
-        p1.innerHTML = [
-          sentenceWrap('p1', 0, 'A scientific <span class="word" data-term="investigation">investigation</span><button class="speak-inline" data-speak="investigation" aria-label="Hear investigation">🔊</button> is a planned way to ask questions about the natural world and test possible answers with evidence.'),
-          sentenceWrap('p1', 1, 'Scientists often begin with an <span class="word" data-term="observation">observation</span><button class="speak-inline" data-speak="observation" aria-label="Hear observation">🔊</button>, then ask a question.'),
-          sentenceWrap('p1', 2, 'After that, they build a <span class="word" data-term="hypothesis">hypothesis</span><button class="speak-inline" data-speak="hypothesis" aria-label="Hear hypothesis">🔊</button>, which is a testable explanation for what they noticed.')
-        ].join(' ');
-        p2.innerHTML = [
-          sentenceWrap('p2', 0, 'Next, scientists make a <span class="word" data-term="prediction">prediction</span><button class="speak-inline" data-speak="prediction" aria-label="Hear prediction">🔊</button> about what should happen if the hypothesis is correct.'),
-          sentenceWrap('p2', 1, 'They may then carry out an <span class="word" data-term="experiment">experiment</span><button class="speak-inline" data-speak="experiment" aria-label="Hear experiment">🔊</button> or another careful investigation to collect <span class="word" data-term="evidence">evidence</span><button class="speak-inline" data-speak="evidence" aria-label="Hear evidence">🔊</button>.'),
-          sentenceWrap('p2', 2, 'Finally, they analyse the results, draw a <span class="word" data-term="conclusion">conclusion</span><button class="speak-inline" data-speak="conclusion" aria-label="Hear conclusion">🔊</button>, and share their findings with other people.')
-        ].join(' ');
-        p3.innerHTML = [
-          sentenceWrap('p3', 0, 'Science does not usually prove an idea forever.'),
-          sentenceWrap('p3', 1, 'Instead, scientists decide whether the evidence supports the explanation well enough.'),
-          sentenceWrap('p3', 2, 'Good scientific ideas can be tested again, checked by others, and improved when new evidence appears.')
-        ].join(' ');
+        p1.innerHTML = [sentenceWrap('p1', 0, 'A scientific <span class="word" data-term="investigation">investigation</span><button class="speak-inline" data-speak="investigation" aria-label="Hear investigation">🔊</button> is a planned way to ask questions about the natural world and test possible answers with evidence.'), sentenceWrap('p1', 1, 'Scientists often begin with an <span class="word" data-term="observation">observation</span><button class="speak-inline" data-speak="observation" aria-label="Hear observation">🔊</button>, then ask a question.'), sentenceWrap('p1', 2, 'After that, they build a <span class="word" data-term="hypothesis">hypothesis</span><button class="speak-inline" data-speak="hypothesis" aria-label="Hear hypothesis">🔊</button>, which is a testable explanation for what they noticed.')].join(' ');
+        p2.innerHTML = [sentenceWrap('p2', 0, 'Next, scientists make a <span class="word" data-term="prediction">prediction</span><button class="speak-inline" data-speak="prediction" aria-label="Hear prediction">🔊</button> about what should happen if the hypothesis is correct.'), sentenceWrap('p2', 1, 'They may then carry out an <span class="word" data-term="experiment">experiment</span><button class="speak-inline" data-speak="experiment" aria-label="Hear experiment">🔊</button> or another careful investigation to collect <span class="word" data-term="evidence">evidence</span><button class="speak-inline" data-speak="evidence" aria-label="Hear evidence">🔊</button>.'), sentenceWrap('p2', 2, 'Finally, they analyse the results, draw a <span class="word" data-term="conclusion">conclusion</span><button class="speak-inline" data-speak="conclusion" aria-label="Hear conclusion">🔊</button>, and share their findings with other people.')].join(' ');
+        p3.innerHTML = [sentenceWrap('p3', 0, 'Science does not usually prove an idea forever.'), sentenceWrap('p3', 1, 'Instead, scientists decide whether the evidence supports the explanation well enough.'), sentenceWrap('p3', 2, 'Good scientific ideas can be tested again, checked by others, and improved when new evidence appears.')].join(' ');
       } else {
-        p1.innerHTML = [
-          sentenceWrap('p1', 0, 'A scientific <span class="word" data-term="investigation">investigation</span><button class="speak-inline" data-speak="investigation" aria-label="Hear investigation">🔊</button> is a systematic process used to explore questions about the natural world and evaluate possible explanations using evidence.'),
-          sentenceWrap('p1', 1, 'Scientists often begin with an <span class="word" data-term="observation">observation</span><button class="speak-inline" data-speak="observation" aria-label="Hear observation">🔊</button>, formulate a focused question, and then propose a <span class="word" data-term="hypothesis">hypothesis</span><button class="speak-inline" data-speak="hypothesis" aria-label="Hear hypothesis">🔊</button> that can be tested.')
-        ].join(' ');
-        p2.innerHTML = [
-          sentenceWrap('p2', 0, 'They then make a <span class="word" data-term="prediction">prediction</span><button class="speak-inline" data-speak="prediction" aria-label="Hear prediction">🔊</button> based on that hypothesis and design an <span class="word" data-term="experiment">experiment</span><button class="speak-inline" data-speak="experiment" aria-label="Hear experiment">🔊</button> or another suitable method for collecting <span class="word" data-term="evidence">evidence</span><button class="speak-inline" data-speak="evidence" aria-label="Hear evidence">🔊</button>.'),
-          sentenceWrap('p2', 1, 'After analysing the data, they draw a <span class="word" data-term="conclusion">conclusion</span><button class="speak-inline" data-speak="conclusion" aria-label="Hear conclusion">🔊</button> about whether the evidence supports the original explanation and communicate their findings clearly.')
-        ].join(' ');
-        p3.innerHTML = [
-          sentenceWrap('p3', 0, 'Scientific knowledge remains open to revision.'),
-          sentenceWrap('p3', 1, 'Explanations are strengthened when results are reproducible, critically reviewed, and refined in the light of additional evidence.')
-        ].join(' ');
+        p1.innerHTML = [sentenceWrap('p1', 0, 'A scientific <span class="word" data-term="investigation">investigation</span><button class="speak-inline" data-speak="investigation" aria-label="Hear investigation">🔊</button> is a systematic process used to explore questions about the natural world and evaluate possible explanations using evidence.'), sentenceWrap('p1', 1, 'Scientists often begin with an <span class="word" data-term="observation">observation</span><button class="speak-inline" data-speak="observation" aria-label="Hear observation">🔊</button>, formulate a focused question, and then propose a <span class="word" data-term="hypothesis">hypothesis</span><button class="speak-inline" data-speak="hypothesis" aria-label="Hear hypothesis">🔊</button> that can be tested.')].join(' ');
+        p2.innerHTML = [sentenceWrap('p2', 0, 'They then make a <span class="word" data-term="prediction">prediction</span><button class="speak-inline" data-speak="prediction" aria-label="Hear prediction">🔊</button> based on that hypothesis and design an <span class="word" data-term="experiment">experiment</span><button class="speak-inline" data-speak="experiment" aria-label="Hear experiment">🔊</button> or another suitable method for collecting <span class="word" data-term="evidence">evidence</span><button class="speak-inline" data-speak="evidence" aria-label="Hear evidence">🔊</button>.'), sentenceWrap('p2', 1, 'After analysing the data, they draw a <span class="word" data-term="conclusion">conclusion</span><button class="speak-inline" data-speak="conclusion" aria-label="Hear conclusion">🔊</button> about whether the evidence supports the original explanation and communicate their findings clearly.')].join(' ');
+        p3.innerHTML = [sentenceWrap('p3', 0, 'Scientific knowledge remains open to revision.'), sentenceWrap('p3', 1, 'Explanations are strengthened when results are reproducible, critically reviewed, and refined in the light of additional evidence.')].join(' ');
       }
-
       bindWordInteractions();
     }
 
     function renderGlossary(filter = '') {
       const q = filter.trim().toLowerCase();
       glossaryList.innerHTML = '';
-
-      Object.entries(glossary)
-        .filter(([term, item]) => {
-          const trans = item.translations[appState.language] || '';
-          const translatedDef = item.explanationTranslations[appState.language] || '';
-          return term.toLowerCase().includes(q) || trans.toLowerCase().includes(q) || item[appState.level].toLowerCase().includes(q) || translatedDef.toLowerCase().includes(q);
-        })
-        .forEach(([term, item]) => {
-          const card = document.createElement('div');
-          card.className = 'glossary-item';
-          const trans = item.translations[appState.language] || '';
-          const translatedDef = item.explanationTranslations[appState.language] || '';
-          const rtlClass = rtlLanguages.has(appState.language) ? 'rtl' : '';
-          card.innerHTML = `
-            <div class="glossary-top">
-              <div class="glossary-term">${term}</div>
-              <button class="btn btn-secondary" data-speak="${term}">🔊</button>
-            </div>
-            <div class="glossary-meta">${item.pos}</div>
-            <div class="glossary-def">${item[appState.level]}</div>
-            <div class="glossary-translation ${rtlClass}">${trans}</div>
-            <button class="btn btn-secondary glossary-translate-btn">Show translated help</button>
-            <div class="glossary-extra ${rtlClass} hidden">${translatedDef}</div>
-          `;
-          card.querySelector('[data-speak]').addEventListener('click', () => speak(term));
-          card.querySelector('.glossary-translate-btn').addEventListener('click', (e) => {
-            const extra = card.querySelector('.glossary-extra');
-            const isHidden = extra.classList.contains('hidden');
-            extra.classList.toggle('hidden');
-            e.currentTarget.textContent = isHidden ? 'Hide translated help' : 'Show translated help';
-          });
-          glossaryList.appendChild(card);
+      Object.entries(glossary).filter(([term, item]) => {
+        const trans = item.translations[appState.language] || '';
+        const translatedDef = item.explanationTranslations[appState.language] || '';
+        return term.toLowerCase().includes(q) || trans.toLowerCase().includes(q) || item[appState.level].toLowerCase().includes(q) || translatedDef.toLowerCase().includes(q);
+      }).forEach(([term, item]) => {
+        const card = document.createElement('div');
+        card.className = 'glossary-item';
+        const trans = item.translations[appState.language] || '';
+        const translatedDef = item.explanationTranslations[appState.language] || '';
+        const rtlClass = rtlLanguages.has(appState.language) ? 'rtl' : '';
+        card.innerHTML = `<div class="glossary-top"><div class="glossary-term">${term}</div><button class="btn btn-secondary" data-speak="${term}">🔊</button></div><div class="glossary-meta">${item.pos}</div><div class="glossary-def">${item[appState.level]}</div><div class="glossary-translation ${rtlClass}">${trans}</div><button class="btn btn-secondary glossary-translate-btn">Show translated help</button><div class="glossary-extra ${rtlClass} hidden">${translatedDef}</div>`;
+        card.querySelector('[data-speak]').addEventListener('click', () => speak(term));
+        card.querySelector('.glossary-translate-btn').addEventListener('click', (e) => {
+          const extra = card.querySelector('.glossary-extra');
+          const isHidden = extra.classList.contains('hidden');
+          extra.classList.toggle('hidden');
+          e.currentTarget.textContent = isHidden ? 'Hide translated help' : 'Show translated help';
         });
+        glossaryList.appendChild(card);
+      });
     }
 
     function renderMyWords() {
@@ -1064,59 +1407,21 @@
         const card = document.createElement('div');
         card.className = 'myword-item';
         const rtlClass = rtlLanguages.has(appState.language) ? 'rtl' : '';
-        card.innerHTML = `
-          <div class="myword-top">
-            <div class="myword-term">${item.term}</div>
-            <div class="subpanel-actions">
-              <button class="btn btn-secondary" data-speak="${item.term}">🔊</button>
-              <button class="btn btn-secondary" data-remove="${index}">Remove</button>
-            </div>
-          </div>
-          <div class="myword-def">${item.definition || ''}</div>
-          <div class="myword-translation ${rtlClass}">${item.translation || ''}</div>
-        `;
+        card.innerHTML = `<div class="myword-top"><div class="myword-term">${item.term}</div><div class="subpanel-actions"><button class="btn btn-secondary" data-speak="${item.term}">🔊</button><button class="btn btn-secondary" data-remove="${index}">Remove</button></div></div><div class="myword-def">${item.definition || ''}</div><div class="myword-translation ${rtlClass}">${item.translation || ''}</div>`;
         card.querySelector('[data-speak]').addEventListener('click', () => speak(item.term));
-        card.querySelector('[data-remove]').addEventListener('click', () => {
-          appState.myWords.splice(index, 1);
-          saveSettings();
-          renderMyWords();
-        });
+        card.querySelector('[data-remove]').addEventListener('click', () => { appState.myWords.splice(index, 1); saveSettings(); renderMyWords(); });
         myWordsList.appendChild(card);
       });
     }
-
-    function addWordToMyWords(term) {
-      if (appState.myWords.some(item => item.term.toLowerCase() === term.toLowerCase())) return;
-      appState.myWords.push({ term, definition: getDefinition(term) || '', translation: getTranslation(term) || '' });
-      saveSettings();
-      renderMyWords();
-    }
-
-    function closePopup() {
-      termPopup.style.display = 'none';
-      termPopup.innerHTML = '';
-    }
-
+    function addWordToMyWords(term) { if (!appState.myWords.some(item => item.term.toLowerCase() === term.toLowerCase())) { appState.myWords.push({ term, definition: getDefinition(term) || '', translation: getTranslation(term) || '' }); saveSettings(); renderMyWords(); } }
+    function closePopup() { termPopup.style.display = 'none'; termPopup.innerHTML = ''; }
     function showPopup(term, anchor) {
       const trans = getTranslation(term);
       const def = getDefinition(term);
       const translatedDef = getTranslatedDefinition(term);
       const rtlClass = rtlLanguages.has(appState.language) ? 'rtl' : '';
       const alreadySaved = appState.myWords.some(item => item.term.toLowerCase() === term.toLowerCase());
-      termPopup.innerHTML = `
-        <div class="popup-top">
-          <h4>${term}</h4>
-          <button class="btn btn-secondary close-btn" id="popupCloseBtn">×</button>
-        </div>
-        <p>${def}</p>
-        <p class="${rtlClass}"><strong>${trans}</strong></p>
-        <p class="glossary-extra ${rtlClass}">${translatedDef}</p>
-        <div class="popup-actions">
-          <button class="btn btn-secondary" id="popupSpeakWord">🔊 Word</button>
-          <button class="btn btn-secondary" id="popupSpeakDef">🔊 Meaning</button>
-          <button class="btn btn-secondary" id="popupSaveWord">${alreadySaved ? 'Saved' : 'Add to My Words'}</button>
-        </div>
-      `;
+      termPopup.innerHTML = `<div class="popup-top"><h4>${term}</h4><button class="btn btn-secondary close-btn" id="popupCloseBtn">×</button></div><p>${def}</p><p class="${rtlClass}"><strong>${trans}</strong></p><p class="glossary-extra ${rtlClass}">${translatedDef}</p><div class="popup-actions"><button class="btn btn-secondary" id="popupSpeakWord">🔊 Word</button><button class="btn btn-secondary" id="popupSpeakDef">🔊 Meaning</button><button class="btn btn-secondary" id="popupSaveWord">${alreadySaved ? 'Saved' : 'Add to My Words'}</button></div>`;
       termPopup.style.display = 'block';
       const rect = anchor.getBoundingClientRect();
       const popupRect = termPopup.getBoundingClientRect();
@@ -1131,16 +1436,10 @@
       document.getElementById('popupCloseBtn').addEventListener('click', closePopup);
       document.getElementById('popupSpeakWord').addEventListener('click', () => speak(term));
       document.getElementById('popupSpeakDef').addEventListener('click', () => speak(def));
-      document.getElementById('popupSaveWord').addEventListener('click', () => {
-        addWordToMyWords(term);
-        document.getElementById('popupSaveWord').textContent = 'Saved';
-      });
+      document.getElementById('popupSaveWord').addEventListener('click', () => { addWordToMyWords(term); document.getElementById('popupSaveWord').textContent = 'Saved'; });
     }
 
-    function clearReadingSpotlight() {
-      document.querySelectorAll('.sentence-chunk.reading-spotlight').forEach(el => el.classList.remove('reading-spotlight'));
-    }
-
+    function clearReadingSpotlight() { document.querySelectorAll('.sentence-chunk.reading-spotlight').forEach(el => el.classList.remove('reading-spotlight')); }
     function chooseVoice() {
       const voices = window.speechSynthesis ? speechSynthesis.getVoices() : [];
       if (!voices.length) return null;
@@ -1150,11 +1449,7 @@
       if (appState.voicePreference === 'male') return pool.find(v => /male|david|daniel|alex|fred|tom/i.test(v.name)) || pool[0];
       return pool[0];
     }
-
-    function updateReadButton() {
-      readParagraphBtn.textContent = appState.isReading ? '⏹ Stop reading' : '🔊 Start reading';
-    }
-
+    function updateReadButton() { readParagraphBtn.textContent = appState.isReading ? '⏹ Stop reading' : '🔊 Start reading'; }
     function getReadingText() {
       const selection = window.getSelection();
       const selectedText = selection ? selection.toString().trim() : '';
@@ -1165,85 +1460,36 @@
       }
       return document.getElementById('readingText').innerText.replace(/🔊/g, ' ');
     }
-
-    function stopSpeaking() {
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      appState.isReading = false;
-      clearReadingSpotlight();
-      updateReadButton();
-    }
-
+    function stopSpeaking() { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); appState.isReading = false; clearReadingSpotlight(); updateReadButton(); }
     function speak(text, asReading = false) {
-      if (!('speechSynthesis' in window)) {
-        alert('Speech synthesis is not supported in this browser.');
-        return;
-      }
+      if (!('speechSynthesis' in window)) { alert('Speech synthesis is not supported in this browser.'); return; }
       window.speechSynthesis.cancel();
-
       if (!asReading) {
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = 'en-US';
-        utterance.rate = appState.readingRate;
-        const voice = chooseVoice();
-        if (voice) utterance.voice = voice;
-        speechSynthesis.speak(utterance);
-        return;
+        utterance.lang = 'en-US'; utterance.rate = appState.readingRate; const voice = chooseVoice(); if (voice) utterance.voice = voice; speechSynthesis.speak(utterance); return;
       }
-
-      appState.isReading = true;
-      updateReadButton();
-
+      appState.isReading = true; updateReadButton();
       const paragraphId = appState.selectedParagraphId;
       let sentences = [];
-      if (paragraphId) {
-        sentences = Array.from(document.querySelectorAll(`#${paragraphId} .sentence-chunk`)).map((el, idx) => ({ text: el.innerText.replace(/🔊/g, ' ').trim(), index: idx })).filter(item => item.text);
-      } else {
-        sentences = [{ text, index: 0 }];
-      }
-
+      if (paragraphId) sentences = Array.from(document.querySelectorAll(`#${paragraphId} .sentence-chunk`)).map((el, idx) => ({ text: el.innerText.replace(/🔊/g, ' ').trim(), index: idx })).filter(item => item.text);
+      else sentences = [{ text, index: 0 }];
       let index = 0;
       const speakNext = () => {
-        if (!appState.isReading || index >= sentences.length) {
-          appState.isReading = false;
-          clearReadingSpotlight();
-          updateReadButton();
-          return;
-        }
+        if (!appState.isReading || index >= sentences.length) { appState.isReading = false; clearReadingSpotlight(); updateReadButton(); return; }
         const current = sentences[index++];
-        if (paragraphId) {
-          clearReadingSpotlight();
-          const chunk = document.querySelector(`#${paragraphId} .sentence-chunk[data-index="${current.index}"]`);
-          if (chunk) chunk.classList.add('reading-spotlight');
-        }
+        if (paragraphId) { clearReadingSpotlight(); const chunk = document.querySelector(`#${paragraphId} .sentence-chunk[data-index="${current.index}"]`); if (chunk) chunk.classList.add('reading-spotlight'); }
         const utterance = new SpeechSynthesisUtterance(current.text);
-        utterance.lang = 'en-US';
-        utterance.rate = appState.readingRate;
-        const voice = chooseVoice();
-        if (voice) utterance.voice = voice;
+        utterance.lang = 'en-US'; utterance.rate = appState.readingRate; const voice = chooseVoice(); if (voice) utterance.voice = voice;
         utterance.onend = speakNext;
-        utterance.onerror = () => {
-          appState.isReading = false;
-          clearReadingSpotlight();
-          updateReadButton();
-        };
+        utterance.onerror = () => { appState.isReading = false; clearReadingSpotlight(); updateReadButton(); };
         speechSynthesis.speak(utterance);
       };
       speakNext();
     }
 
     function bindWordInteractions() {
-      document.querySelectorAll('.word').forEach(el => {
-        el.addEventListener('click', (e) => {
-          e.stopPropagation();
-          showPopup(el.dataset.term, el);
-        });
-      });
-      document.querySelectorAll('.speak-inline').forEach(el => {
-        el.addEventListener('click', (e) => {
-          e.stopPropagation();
-          speak(el.dataset.speak);
-        });
-      });
+      document.querySelectorAll('.word').forEach(el => el.addEventListener('click', (e) => { e.stopPropagation(); showPopup(el.dataset.term, el); }));
+      document.querySelectorAll('.speak-inline').forEach(el => el.addEventListener('click', (e) => { e.stopPropagation(); speak(el.dataset.speak); }));
       document.querySelectorAll('#readingText p').forEach(p => {
         p.addEventListener('click', (e) => {
           if (e.target.classList.contains('word') || e.target.classList.contains('speak-inline')) return;
@@ -1253,22 +1499,14 @@
           saveSettings();
         });
       });
-      if (appState.selectedParagraphId) {
-        const current = document.getElementById(appState.selectedParagraphId);
-        if (current) current.classList.add('start-point');
-      }
+      if (appState.selectedParagraphId) { const current = document.getElementById(appState.selectedParagraphId); if (current) current.classList.add('start-point'); }
     }
-
     function applyLevelHighlights() {
       const allowed = new Set(['investigation', 'observation', 'hypothesis', 'prediction', 'experiment', 'evidence', 'conclusion']);
       document.querySelectorAll('.word').forEach(el => { el.style.display = allowed.has(el.dataset.term) ? 'inline' : 'none'; });
       document.querySelectorAll('.speak-inline').forEach(el => { el.style.display = allowed.has(el.dataset.speak) ? 'inline-flex' : 'none'; });
     }
-
-    function applyFontScale() {
-      const reading = document.getElementById('readingText');
-      if (reading) reading.style.fontSize = `${18 * appState.fontScale}px`;
-    }
+    function applyFontScale() { const reading = document.getElementById('readingText'); if (reading) reading.style.fontSize = `${18 * appState.fontScale}px`; }
 
     async function translateWord(word, targetLang) {
       const lang = GOOGLE_LANG_MAP[targetLang] || targetLang;
@@ -1278,9 +1516,7 @@
         const response = await fetch(url);
         const data = await response.json();
         return Array.isArray(data?.[0]) ? data[0].map(part => part[0]).join('') : '';
-      } catch (e) {
-        return '';
-      }
+      } catch (e) { return ''; }
     }
 
     async function lookupDictionaryWord(word) {
@@ -1303,51 +1539,20 @@
         const audio = Array.isArray(entry.phonetics) ? (entry.phonetics.find(p => p.audio)?.audio || '') : '';
         const card = document.createElement('div');
         card.className = 'glossary-item';
-        card.innerHTML = `
-          <div class="glossary-top">
-            <div class="glossary-term">${entry.word || cleanWord}</div>
-            <div class="subpanel-actions">
-              <button class="btn btn-secondary" id="dictionarySpeakBtn">🔊</button>
-              <button class="btn btn-secondary" id="dictionarySaveBtn">Add to My Words</button>
-            </div>
-          </div>
-          ${phonetic ? `<div class="glossary-translation">${phonetic}</div>` : ''}
-          <button class="btn btn-secondary" id="dictionaryTranslateBtn">Show translation</button>
-          <div class="glossary-extra hidden" id="dictionaryTranslationBox"></div>
-          ${meanings.map(m => `<div class="glossary-meta">${m.partOfSpeech || ''}</div><div class="glossary-def">${(m.definitions && m.definitions[0] && m.definitions[0].definition) || ''}</div>`).join('')}
-        `;
+        card.innerHTML = `<div class="glossary-top"><div class="glossary-term">${entry.word || cleanWord}</div><div class="subpanel-actions"><button class="btn btn-secondary" id="dictionarySpeakBtn">🔊</button><button class="btn btn-secondary" id="dictionarySaveBtn">Add to My Words</button></div></div>${phonetic ? `<div class="glossary-translation">${phonetic}</div>` : ''}<button class="btn btn-secondary" id="dictionaryTranslateBtn">Show translation</button><div class="glossary-extra hidden" id="dictionaryTranslationBox"></div>${meanings.map(m => `<div class="glossary-meta">${m.partOfSpeech || ''}</div><div class="glossary-def">${(m.definitions && m.definitions[0] && m.definitions[0].definition) || ''}</div>`).join('')}`;
         dictionaryResult.appendChild(card);
         const speakTarget = entry.word || cleanWord;
-        document.getElementById('dictionarySpeakBtn').addEventListener('click', () => {
-          if (audio) {
-            const a = new Audio(audio.startsWith('//') ? `https:${audio}` : audio);
-            a.play().catch(() => speak(speakTarget));
-          } else {
-            speak(speakTarget);
-          }
-        });
+        document.getElementById('dictionarySpeakBtn').addEventListener('click', () => { if (audio) { const a = new Audio(audio.startsWith('//') ? `https:${audio}` : audio); a.play().catch(() => speak(speakTarget)); } else speak(speakTarget); });
         document.getElementById('dictionaryTranslateBtn').addEventListener('click', async (e) => {
           const box = document.getElementById('dictionaryTranslationBox');
           const isHidden = box.classList.contains('hidden');
-          if (isHidden) {
-            box.textContent = 'Translating...';
-            box.classList.remove('hidden');
-            const translated = await translateWord(speakTarget, appState.language);
-            box.textContent = translated || 'Translation unavailable.';
-            e.currentTarget.textContent = 'Hide translation';
-          } else {
-            box.classList.add('hidden');
-            e.currentTarget.textContent = 'Show translation';
-          }
+          if (isHidden) { box.textContent = 'Translating...'; box.classList.remove('hidden'); const translated = await translateWord(speakTarget, appState.language); box.textContent = translated || 'Translation unavailable.'; e.currentTarget.textContent = 'Hide translation'; }
+          else { box.classList.add('hidden'); e.currentTarget.textContent = 'Show translation'; }
         });
         document.getElementById('dictionarySaveBtn').addEventListener('click', async () => {
           const firstMeaning = meanings[0]?.definitions?.[0]?.definition || '';
           const translated = await translateWord(speakTarget, appState.language);
-          if (!appState.myWords.some(item => item.term.toLowerCase() === speakTarget.toLowerCase())) {
-            appState.myWords.push({ term: speakTarget, definition: firstMeaning, translation: translated || '' });
-            saveSettings();
-            renderMyWords();
-          }
+          if (!appState.myWords.some(item => item.term.toLowerCase() === speakTarget.toLowerCase())) { appState.myWords.push({ term: speakTarget, definition: firstMeaning, translation: translated || '' }); saveSettings(); renderMyWords(); }
         });
       } catch (error) {
         dictionaryStatus.textContent = 'Dictionary service is unavailable.';
@@ -1356,208 +1561,172 @@
     }
 
     const posterContent = {
-      question: {
-        title: 'Ask a Question',
-        text: 'Start with something you notice and turn it into a clear question that you want to investigate.'
-      },
-      research: {
-        title: 'Do Background Research',
-        text: 'Find useful information so you understand the topic better before planning your investigation.'
-      },
-      hypothesis: {
-        title: 'Construct a Hypothesis',
-        text: 'Write a possible explanation or prediction based on what you already know.'
-      },
-      experiment: {
-        title: 'Test with an Experiment',
-        text: 'Carry out a fair test, follow the method carefully, and collect evidence.'
-      },
-      procedure: {
-        title: 'Procedure Working?',
-        text: 'Check whether the method is working properly and whether the steps are clear and reliable.'
-      },
-      no: {
-        title: 'No',
-        text: 'If the procedure is not working, troubleshoot the set-up and improve the method before continuing.'
-      },
-      yes: {
-        title: 'Yes',
-        text: 'If the procedure is working, continue and move on to analyse the data.'
-      },
-      troubleshoot: {
-        title: 'Troubleshoot Procedure',
-        text: 'Carefully check all steps, equipment, measurements, variables, and the overall set-up.'
-      },
-      analyse: {
-        title: 'Analyze Data and Draw Conclusions',
-        text: 'Look for patterns in the results and decide whether the evidence supports your hypothesis.'
-      },
-      results_yes: {
-        title: 'Results Align with Hypothesis',
-        text: 'Your evidence supports the hypothesis, so you can explain the findings and communicate them clearly.'
-      },
-      results_partial: {
-        title: 'Results Align Partially or Not at All with Hypothesis',
-        text: 'Your results may suggest that the hypothesis should be improved, changed, or replaced.'
-      },
-      loop: {
-        title: 'Future Investigation Loop',
-        text: 'Experimental data can become background research for a future project. Ask a new question, form a new hypothesis, and experiment again.'
-      },
-      communicate: {
-        title: 'Communicate Results',
-        text: 'Present your findings clearly and explain what you discovered from your investigation.'
-      }
+      question: { title: 'Ask a Question', text: 'Start with something you notice and turn it into a clear question that you want to investigate.' },
+      research: { title: 'Do Background Research', text: 'Find useful information so you understand the topic better before planning your investigation.' },
+      hypothesis: { title: 'Construct a Hypothesis', text: 'Write a possible explanation or prediction based on what you already know.' },
+      experiment: { title: 'Test with an Experiment', text: 'Carry out a fair test, follow the method carefully, and collect evidence.' },
+      procedure: { title: 'Procedure Working?', text: 'Check whether the method is working properly and whether the steps are clear and reliable.' },
+      no: { title: 'No', text: 'If the procedure is not working, troubleshoot the set-up and improve the method before continuing.' },
+      yes: { title: 'Yes', text: 'If the procedure is working, continue and move on to analyse the data.' },
+      troubleshoot: { title: 'Troubleshoot Procedure', text: 'Carefully check all steps, equipment, measurements, variables, and the overall set-up.' },
+      analyse: { title: 'Analyze Data and Draw Conclusions', text: 'Look for patterns in the results and decide whether the evidence supports your hypothesis.' },
+      results_yes: { title: 'Results Align with Hypothesis', text: 'Your evidence supports the hypothesis, so you can explain the findings and communicate them clearly.' },
+      results_partial: { title: 'Results Align Partially or Not at All with Hypothesis', text: 'Your results may suggest that the hypothesis should be improved, changed, or replaced.' },
+      loop: { title: 'Future Investigation Loop', text: 'Experimental data can become background research for a future project. Ask a new question, form a new hypothesis, and experiment again.' },
+      communicate: { title: 'Communicate Results', text: 'Present your findings clearly and explain what you discovered from your investigation.' }
     };
 
     let posterCurrentKey = null;
     let posterShowingTranslation = false;
     let posterSpeechActive = false;
-
-    function stopPosterSpeech() {
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      posterSpeechActive = false;
-      const readBtn = document.getElementById('posterReadToggleBtn');
-      if (readBtn) readBtn.textContent = '🔊 Read';
-    }
-
+    function stopPosterSpeech() { if ('speechSynthesis' in window) window.speechSynthesis.cancel(); posterSpeechActive = false; const readBtn = document.getElementById('posterReadToggleBtn'); if (readBtn) readBtn.textContent = '🔊 Read'; }
     function speakPosterText(text) {
-      stopPosterSpeech();
-      if (!('speechSynthesis' in window)) return;
+      stopPosterSpeech(); if (!('speechSynthesis' in window)) return;
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = appState.readingRate;
-      const voice = chooseVoice();
-      if (voice) utterance.voice = voice;
-      posterSpeechActive = true;
-      const btn = document.getElementById('posterReadToggleBtn');
-      if (btn) btn.textContent = '⏹ Stop';
-      utterance.onend = () => {
-        posterSpeechActive = false;
-        const b = document.getElementById('posterReadToggleBtn');
-        if (b) b.textContent = '🔊 Read';
-      };
-      utterance.onerror = () => {
-        posterSpeechActive = false;
-        const b = document.getElementById('posterReadToggleBtn');
-        if (b) b.textContent = '🔊 Read';
-      };
+      utterance.lang = 'en-US'; utterance.rate = appState.readingRate; const voice = chooseVoice(); if (voice) utterance.voice = voice;
+      posterSpeechActive = true; const btn = document.getElementById('posterReadToggleBtn'); if (btn) btn.textContent = '⏹ Stop';
+      utterance.onend = () => { posterSpeechActive = false; const b = document.getElementById('posterReadToggleBtn'); if (b) b.textContent = '🔊 Read'; };
+      utterance.onerror = () => { posterSpeechActive = false; const b = document.getElementById('posterReadToggleBtn'); if (b) b.textContent = '🔊 Read'; };
       speechSynthesis.speak(utterance);
     }
-
     async function togglePosterTranslation() {
-      const item = posterContent[posterCurrentKey];
-      const textEl = document.getElementById('posterPopupText');
-      const btn = document.getElementById('posterTranslateToggleBtn');
+      const item = posterContent[posterCurrentKey]; const textEl = document.getElementById('posterPopupText'); const btn = document.getElementById('posterTranslateToggleBtn');
       if (!item || !textEl || !btn) return;
-      if (!posterShowingTranslation) {
-        btn.textContent = 'Translating...';
-        const translated = await translateWord(item.text, appState.language);
-        textEl.textContent = translated || item.text;
-        btn.textContent = 'Show original';
-        posterShowingTranslation = true;
-      } else {
-        textEl.textContent = item.text;
-        btn.textContent = '🌍 Translate';
-        posterShowingTranslation = false;
-      }
+      if (!posterShowingTranslation) { btn.textContent = 'Translating...'; const translated = await translateWord(item.text, appState.language); textEl.textContent = translated || item.text; btn.textContent = 'Show original'; posterShowingTranslation = true; }
+      else { textEl.textContent = item.text; btn.textContent = '🌍 Translate'; posterShowingTranslation = false; }
     }
-
     function openPosterPopup(key) {
-      posterCurrentKey = key;
-      posterShowingTranslation = false;
-      stopPosterSpeech();
-      const item = posterContent[key];
-      if (!item) return;
-      posterPopup.innerHTML = `
-        <div class="poster-popup-top">
-          <h3>${item.title}</h3>
-          <button class="btn btn-secondary close-btn" id="posterClosePopupBtn">×</button>
-        </div>
-        <p id="posterPopupText">${item.text}</p>
-        <div class="poster-popup-actions">
-          <button class="btn btn-primary" id="posterReadToggleBtn">🔊 Read</button>
-          <button class="btn btn-secondary" id="posterTranslateToggleBtn">🌍 Translate</button>
-        </div>
-      `;
-      posterPopup.style.display = 'block';
-      posterOverlay.style.display = 'block';
+      posterCurrentKey = key; posterShowingTranslation = false; stopPosterSpeech(); const item = posterContent[key]; if (!item) return;
+      posterPopup.innerHTML = `<div class="poster-popup-top"><h3>${item.title}</h3><button class="btn btn-secondary close-btn" id="posterClosePopupBtn">×</button></div><p id="posterPopupText">${item.text}</p><div class="poster-popup-actions"><button class="btn btn-primary" id="posterReadToggleBtn">🔊 Read</button><button class="btn btn-secondary" id="posterTranslateToggleBtn">🌍 Translate</button></div>`;
+      posterPopup.style.display = 'block'; posterOverlay.style.display = 'block';
       document.getElementById('posterClosePopupBtn').onclick = closePosterPopup;
-      document.getElementById('posterReadToggleBtn').onclick = () => {
-        const text = document.getElementById('posterPopupText').textContent;
-        if (!posterSpeechActive) {
-          speakPosterText(text);
-        } else {
-          stopPosterSpeech();
-        }
-      };
+      document.getElementById('posterReadToggleBtn').onclick = () => { const text = document.getElementById('posterPopupText').textContent; if (!posterSpeechActive) speakPosterText(text); else stopPosterSpeech(); };
       document.getElementById('posterTranslateToggleBtn').onclick = togglePosterTranslation;
     }
+    function closePosterPopup() { posterPopup.style.display = 'none'; posterOverlay.style.display = 'none'; stopPosterSpeech(); }
+    function initPosterModule() { document.querySelectorAll('.poster-hotspot').forEach(btn => btn.addEventListener('click', () => openPosterPopup(btn.dataset.key))); if (posterOverlay) posterOverlay.addEventListener('click', closePosterPopup); }
 
-    function closePosterPopup() {
-      posterPopup.style.display = 'none';
-      posterOverlay.style.display = 'none';
-      stopPosterSpeech();
-    }
-
-    function initPosterModule() {
-      document.querySelectorAll('.poster-hotspot').forEach(btn => {
-        btn.addEventListener('click', () => openPosterPopup(btn.dataset.key));
+    function initExerciseTabs() {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(btn.dataset.tab).classList.add('active');
+        });
       });
-      if (posterOverlay) posterOverlay.addEventListener('click', closePosterPopup);
     }
+
+    async function toggleTranslateElements(btn) {
+      const targetIds = [btn.dataset.target].concat((btn.dataset.extra || '').split(',').filter(Boolean));
+      const firstTarget = document.getElementById(btn.dataset.target);
+      const currentlyTranslated = firstTarget && firstTarget.dataset.translatedShown === 'true';
+      if (!currentlyTranslated) btn.textContent = 'Translating...';
+      for (const id of targetIds) {
+        const el = document.getElementById(id.trim());
+        if (!el) continue;
+        const original = el.dataset.original || el.innerHTML.trim();
+        if (!currentlyTranslated) {
+          const translated = await translateWord(el.innerText || original, appState.language);
+          el.innerHTML = translated || original;
+          el.dataset.translatedShown = 'true';
+        } else {
+          el.innerHTML = original;
+          el.dataset.translatedShown = '';
+        }
+      }
+      btn.textContent = currentlyTranslated ? 'Translate task' : 'Show English';
+    }
+
+    function initExerciseTranslations() { document.querySelectorAll('.translate-btn').forEach(btn => btn.addEventListener('click', () => toggleTranslateElements(btn))); }
+
+    let draggedCard = null;
+    function getCardAnswer(card) { return card.dataset.type || card.dataset.label || card.dataset.word || ''; }
+    function attachDragEvents() {
+      document.querySelectorAll('.card-word').forEach(card => {
+        card.addEventListener('dragstart', () => { draggedCard = card; });
+        card.addEventListener('dragend', () => { draggedCard = null; });
+      });
+      document.querySelectorAll('.dropzone, .fillblank').forEach(zone => {
+        zone.addEventListener('dragover', e => e.preventDefault());
+        zone.addEventListener('drop', e => {
+          e.preventDefault();
+          if (!draggedCard) return;
+          if (zone.firstElementChild) {
+            const old = zone.firstElementChild;
+            const parentTask = zone.closest('.tab-content');
+            const bank = parentTask.querySelector('.word-bank');
+            if (bank) bank.appendChild(old);
+          }
+          zone.appendChild(draggedCard);
+          if (zone.classList.contains('dropzone')) zone.classList.add('filled');
+        });
+      });
+      document.querySelectorAll('.word-bank').forEach(bank => {
+        bank.addEventListener('dragover', e => e.preventDefault());
+        bank.addEventListener('drop', e => { e.preventDefault(); if (draggedCard) bank.appendChild(draggedCard); });
+      });
+    }
+    function checkAnswers(taskId) {
+      const task = document.getElementById(taskId);
+      task.querySelectorAll('.dropzone').forEach(zone => {
+        const expected = String(zone.dataset.answer || '').toLowerCase();
+        const card = zone.firstElementChild;
+        zone.style.borderColor = ''; zone.style.background = 'var(--panel)';
+        if (!card) return;
+        const actual = String(getCardAnswer(card)).toLowerCase();
+        if (actual === expected) { zone.style.borderColor = 'var(--success)'; zone.style.background = 'rgba(45,138,74,0.08)'; }
+        else { zone.style.borderColor = 'var(--danger)'; zone.style.background = 'rgba(194,73,85,0.08)'; }
+      });
+    }
+    function resetTask(taskId, bankId) {
+      const task = document.getElementById(taskId); const bank = document.getElementById(bankId);
+      task.querySelectorAll('.dropzone').forEach(zone => {
+        while (zone.firstChild) bank.appendChild(zone.firstChild);
+        zone.style.borderColor = ''; zone.style.background = 'var(--panel)'; zone.classList.remove('filled');
+      });
+    }
+    function checkFillBlanks(taskId) {
+      const task = document.getElementById(taskId);
+      task.querySelectorAll('.fillblank').forEach(blank => {
+        const expected = String(blank.dataset.answer || '').toLowerCase();
+        const card = blank.firstElementChild;
+        blank.classList.remove('correct', 'wrong');
+        if (!card) return;
+        const actual = String(getCardAnswer(card)).toLowerCase();
+        if (actual === expected) blank.classList.add('correct');
+        else blank.classList.add('wrong');
+      });
+    }
+    function resetFillBlanks(taskId, bankId) {
+      const task = document.getElementById(taskId); const bank = document.getElementById(bankId);
+      task.querySelectorAll('.fillblank').forEach(blank => { while (blank.firstChild) bank.appendChild(blank.firstChild); blank.classList.remove('correct', 'wrong'); });
+    }
+    window.checkAnswers = checkAnswers;
+    window.resetTask = resetTask;
+    window.checkFillBlanks = checkFillBlanks;
+    window.resetFillBlanks = resetFillBlanks;
 
     function applyAll() {
-      applyTheme();
-      renderChapterText();
-      updateSettingsChips();
-      renderGlossary(glossarySearch.value);
-      renderMyWords();
-      applyLevelHighlights();
-      applyFontScale();
-      syncQuickSettings();
-      updateReadButton();
-      saveSettings();
+      applyTheme(); renderChapterText(); updateSettingsChips(); renderGlossary(glossarySearch.value); renderMyWords(); applyLevelHighlights(); applyFontScale(); syncQuickSettings(); updateReadButton(); saveSettings();
     }
-
-    function openSettings() {
-      syncQuickSettings();
-      settingsOverlay.style.display = 'flex';
-    }
-    function closeSettings() {
-      settingsOverlay.style.display = 'none';
-    }
-
+    function openSettings() { syncQuickSettings(); settingsOverlay.style.display = 'flex'; }
+    function closeSettings() { settingsOverlay.style.display = 'none'; }
     async function downloadMyWordsPdf() {
       const passageParagraphs = Array.from(document.querySelectorAll('#readingText p')).map(p => `<p>${p.innerText.replace(/🔊/g, ' ')}</p>`).join('');
       let wordsForExport = appState.myWords;
-      wordsForExport = await Promise.all(appState.myWords.map(async item => {
-        const translated = item.translation || await translateWord(item.term, appState.language);
-        return { ...item, translation: translated || '' };
-      }));
-      appState.myWords = wordsForExport;
-      saveSettings();
-      renderMyWords();
+      wordsForExport = await Promise.all(appState.myWords.map(async item => ({ ...item, translation: item.translation || await translateWord(item.term, appState.language) || '' })));
+      appState.myWords = wordsForExport; saveSettings(); renderMyWords();
       const listHtml = wordsForExport.length ? `<h2>My Words Export</h2><ol>${wordsForExport.map(item => `<li>${item.term} — ${item.translation}</li>`).join('')}</ol>` : `<p>No saved words yet.</p>`;
       printArea.innerHTML = `<h1>${CHAPTER_NAME}</h1><h2>Text passage</h2>${passageParagraphs}${listHtml}`;
-      printArea.classList.remove('hidden');
-      window.print();
-      printArea.classList.add('hidden');
+      printArea.classList.remove('hidden'); window.print(); printArea.classList.add('hidden');
     }
-
     function startChapter() {
       const value = passwordInput.value.trim();
-      if (value !== REQUIRED_PASSWORD) {
-        passwordError.textContent = 'Incorrect password. Please try again.';
-        return;
-      }
+      if (value !== REQUIRED_PASSWORD) { passwordError.textContent = 'Incorrect password. Please try again.'; return; }
       passwordError.textContent = '';
-      appState.language = languageSelect.value;
-      appState.level = levelSelect.value;
-      appState.voicePreference = voiceSelect.value;
-      appState.theme = themeSelect.value;
-      applyAll();
-      setupOverlay.style.display = 'none';
+      appState.language = languageSelect.value; appState.level = levelSelect.value; appState.voicePreference = voiceSelect.value; appState.theme = themeSelect.value;
+      applyAll(); setupOverlay.style.display = 'none';
     }
 
     startBtn.addEventListener('click', startChapter);
@@ -1565,23 +1734,9 @@
     glossarySearch.addEventListener('input', (e) => renderGlossary(e.target.value));
     dictionarySearch.addEventListener('keydown', (e) => { if (e.key === 'Enter') lookupDictionaryWord(dictionarySearch.value); });
     dictionarySearchBtn.addEventListener('click', () => lookupDictionaryWord(dictionarySearch.value));
-
-    readParagraphBtn.addEventListener('click', () => {
-      if (appState.isReading) { stopSpeaking(); return; }
-      speak(getReadingText(), true);
-    });
-
-    fontDecreaseBtn.addEventListener('click', () => {
-      const values = [0.85, 1, 1.15, 1.3];
-      const i = values.indexOf(appState.fontScale);
-      if (i > 0) { appState.fontScale = values[i - 1]; applyAll(); }
-    });
-    fontIncreaseBtn.addEventListener('click', () => {
-      const values = [0.85, 1, 1.15, 1.3];
-      const i = values.indexOf(appState.fontScale);
-      if (i < values.length - 1) { appState.fontScale = values[i + 1]; applyAll(); }
-    });
-
+    readParagraphBtn.addEventListener('click', () => { if (appState.isReading) { stopSpeaking(); return; } speak(getReadingText(), true); });
+    fontDecreaseBtn.addEventListener('click', () => { const values = [0.85, 1, 1.15, 1.3]; const i = values.indexOf(appState.fontScale); if (i > 0) { appState.fontScale = values[i - 1]; applyAll(); } });
+    fontIncreaseBtn.addEventListener('click', () => { const values = [0.85, 1, 1.15, 1.3]; const i = values.indexOf(appState.fontScale); if (i < values.length - 1) { appState.fontScale = values[i + 1]; applyAll(); } });
     openSettingsBtn.addEventListener('click', openSettings);
     closeSettingsBtn.addEventListener('click', closeSettings);
     settingsOverlay.addEventListener('click', (e) => { if (e.target === settingsOverlay) closeSettings(); });
@@ -1590,17 +1745,14 @@
     quickVoiceSelect.addEventListener('change', () => { appState.voicePreference = quickVoiceSelect.value; applyAll(); });
     quickThemeSelect.addEventListener('change', () => { appState.theme = quickThemeSelect.value; applyAll(); });
     speedRange.addEventListener('input', () => { appState.readingRate = Number(speedRange.value); updateSpeedLabel(); updateSettingsChips(); saveSettings(); });
-
     clearWordsBtn.addEventListener('click', () => { appState.myWords = []; saveSettings(); renderMyWords(); });
     downloadPdfBtn.addEventListener('click', downloadMyWordsPdf);
-
-    document.addEventListener('click', (e) => {
-      const insidePopup = termPopup.contains(e.target);
-      const clickedWord = e.target.classList && e.target.classList.contains('word');
-      if (!insidePopup && !clickedWord) closePopup();
-    });
+    document.addEventListener('click', (e) => { const insidePopup = termPopup.contains(e.target); const clickedWord = e.target.classList && e.target.classList.contains('word'); if (!insidePopup && !clickedWord) closePopup(); });
 
     initPosterModule();
+    initExerciseTabs();
+    initExerciseTranslations();
+    attachDragEvents();
     loadSettings();
     syncForm();
     applyTheme();
@@ -1613,11 +1765,7 @@
     syncQuickSettings();
     updateReadButton();
     setupOverlay.style.display = 'flex';
-
-    if (window.speechSynthesis) {
-      speechSynthesis.onvoiceschanged = () => {};
-      window.addEventListener('beforeunload', () => window.speechSynthesis.cancel());
-    }
+    if (window.speechSynthesis) { speechSynthesis.onvoiceschanged = () => {}; window.addEventListener('beforeunload', () => window.speechSynthesis.cancel()); }
   </script>
 </body>
 </html>
