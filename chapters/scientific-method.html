@@ -16,6 +16,7 @@
       --shadow: 0 12px 36px rgba(24, 39, 75, 0.12);
       --highlight: #fff1a8;
       --highlight-border: #f0cc45;
+      --banner-url: url('https://raw.githubusercontent.com/physchemib/ell-science/refs/heads/main/images/pixel_art_large_banner_v2.svg');
     }
 
     body.dark {
@@ -59,12 +60,33 @@
     }
 
     .hero {
-      padding: 22px 24px;
-      background: linear-gradient(135deg, #ffd89b, #19547b);
+      position: relative;
+      padding: 30px 24px;
       color: white;
+      background-image:
+        linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.45)),
+        var(--banner-url);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 170px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
-    .hero h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.15; }
-    .hero p { margin: 0; font-size: 15px; line-height: 1.55; }
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.15;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+    .hero p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 820px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
 
     .toolbar {
       display: flex;
@@ -230,7 +252,7 @@
     .glossary-def, .myword-def { font-size: 14px; line-height: 1.65; margin-bottom: 8px; }
     .glossary-translation, .myword-translation { font-size: 15px; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
     .glossary-extra {
-      font-size: 13px;
+      font-size: 18px;
       line-height: 1.6;
       color: var(--muted);
       margin-top: 8px;
@@ -301,12 +323,31 @@
       overflow: hidden;
     }
     .setup-head {
-      padding: 22px 24px;
-      background: linear-gradient(135deg, #ffd89b, #19547b);
+      position: relative;
+      padding: 26px 24px;
       color: white;
+      background-image:
+        linear-gradient(rgba(15, 23, 42, 0.50), rgba(15, 23, 42, 0.50)),
+        var(--banner-url);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 150px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
     }
-    .setup-head h2 { margin: 0 0 8px; font-size: 28px; }
-    .setup-head p { margin: 0; line-height: 1.6; font-size: 15px; }
+    .setup-head h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
+    .setup-head p {
+      margin: 0;
+      line-height: 1.6;
+      font-size: 15px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    }
     .setup-body {
       padding: 22px 24px 24px;
       display: grid;
@@ -385,9 +426,111 @@
     .slider-wrap input[type="range"] { width: 100%; }
     .slider-value { font-size: 13px; color: var(--muted); }
 
+    .poster-module {
+      margin: 0 22px 22px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .poster-module-head {
+      padding: 18px 22px 10px;
+      border-bottom: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .poster-module-head h2 {
+      margin: 0 0 6px;
+      font-size: 23px;
+    }
+    .poster-module-head p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .poster-inner {
+      padding: 14px;
+    }
+    .poster-svg-shell {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+    .poster-svg-shell svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .poster-hotspot {
+      fill: rgba(255,255,255,0);
+      stroke: rgba(201,17,83,0);
+      stroke-width: 20;
+      cursor: pointer;
+      transition: fill 0.18s ease, stroke 0.18s ease;
+    }
+    .poster-hotspot:hover,
+    .poster-hotspot:focus {
+      fill: rgba(255,255,255,0.04);
+      stroke: rgba(201,17,83,0.55);
+      outline: none;
+    }
+    .poster-note {
+      text-align: center;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .poster-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.42);
+      display: none;
+      z-index: 95;
+    }
+    .poster-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: min(390px, calc(100vw - 24px));
+      transform: translate(-50%, -50%);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.24);
+      padding: 18px;
+      display: none;
+      z-index: 100;
+    }
+    .poster-popup-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .poster-popup h3 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .poster-popup p {
+      margin: 0;
+      line-height: 1.6;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .poster-popup-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
     @media (max-width: 980px) {
       .app { grid-template-columns: 1fr; }
       .setup-body, .settings-grid, .legend { grid-template-columns: 1fr; }
+      .hero, .setup-head { min-height: 130px; }
     }
 
     @media print {
@@ -435,6 +578,38 @@
         <p id="p1"></p>
         <p id="p2"></p>
         <p id="p3"></p>
+      </div>
+
+      <div class="poster-module" id="posterModule">
+        <div class="poster-module-head">
+          <h2>Interactive scientific method</h2>
+          <p>Click a section to open explanation, hear it, or translate it in your selected support language.</p>
+        </div>
+        <div class="poster-inner">
+          <div class="poster-svg-shell">
+            <svg viewBox="0 0 5000 7084" aria-label="Interactive scientific method poster">
+              <image
+                href="https://raw.githubusercontent.com/physchemib/ell-science/refs/heads/main/images/Scientific%20method%20to%20Website%20SVG.svg"
+                x="0" y="0" width="5000" height="7084"
+                preserveAspectRatio="xMidYMid meet"
+              />
+              <rect class="poster-hotspot" data-key="question" x="1660" y="540" width="1610" height="485" rx="28" />
+              <rect class="poster-hotspot" data-key="procedure" x="1660" y="1210" width="1610" height="485" rx="28" />
+              <rect class="poster-hotspot" data-key="research" x="1660" y="1885" width="1610" height="485" rx="28" />
+              <rect class="poster-hotspot" data-key="hypothesis" x="1660" y="2550" width="1610" height="485" rx="28" />
+              <rect class="poster-hotspot" data-key="experiment" x="1660" y="3220" width="1610" height="485" rx="28" />
+              <rect class="poster-hotspot" data-key="no" x="2000" y="3890" width="390" height="370" rx="28" />
+              <rect class="poster-hotspot" data-key="yes" x="2590" y="3890" width="390" height="370" rx="28" />
+              <rect class="poster-hotspot" data-key="troubleshoot" x="210" y="3440" width="1100" height="900" rx="32" />
+              <rect class="poster-hotspot" data-key="loop" x="3810" y="2770" width="1040" height="2000" rx="32" />
+              <rect class="poster-hotspot" data-key="analyse" x="1660" y="4550" width="1610" height="500" rx="32" />
+              <rect class="poster-hotspot" data-key="results_yes" x="790" y="5220" width="1610" height="500" rx="28" />
+              <rect class="poster-hotspot" data-key="results_partial" x="2610" y="5220" width="1610" height="500" rx="28" />
+              <rect class="poster-hotspot" data-key="communicate" x="1660" y="5890" width="1610" height="500" rx="28" />
+            </svg>
+          </div>
+          <div class="poster-note">Use the same language and voice settings as the rest of the chapter.</div>
+        </div>
       </div>
     </section>
 
@@ -606,6 +781,9 @@
     </div>
   </div>
 
+  <div class="poster-overlay" id="posterOverlay"></div>
+  <div class="poster-popup" id="posterPopup"></div>
+
   <div id="printArea" class="hidden"></div>
 
   <script>
@@ -705,6 +883,8 @@
     const dictionarySearchBtn = document.getElementById('dictionarySearchBtn');
     const dictionaryResult = document.getElementById('dictionaryResult');
     const dictionaryStatus = document.getElementById('dictionaryStatus');
+    const posterOverlay = document.getElementById('posterOverlay');
+    const posterPopup = document.getElementById('posterPopup');
 
     function saveSettings() {
       localStorage.setItem('ealScienceSettings', JSON.stringify({
@@ -1175,6 +1355,158 @@
       }
     }
 
+    const posterContent = {
+      question: {
+        title: 'Ask a Question',
+        text: 'Start with something you notice and turn it into a clear question that you want to investigate.'
+      },
+      research: {
+        title: 'Do Background Research',
+        text: 'Find useful information so you understand the topic better before planning your investigation.'
+      },
+      hypothesis: {
+        title: 'Construct a Hypothesis',
+        text: 'Write a possible explanation or prediction based on what you already know.'
+      },
+      experiment: {
+        title: 'Test with an Experiment',
+        text: 'Carry out a fair test, follow the method carefully, and collect evidence.'
+      },
+      procedure: {
+        title: 'Procedure Working?',
+        text: 'Check whether the method is working properly and whether the steps are clear and reliable.'
+      },
+      no: {
+        title: 'No',
+        text: 'If the procedure is not working, troubleshoot the set-up and improve the method before continuing.'
+      },
+      yes: {
+        title: 'Yes',
+        text: 'If the procedure is working, continue and move on to analyse the data.'
+      },
+      troubleshoot: {
+        title: 'Troubleshoot Procedure',
+        text: 'Carefully check all steps, equipment, measurements, variables, and the overall set-up.'
+      },
+      analyse: {
+        title: 'Analyze Data and Draw Conclusions',
+        text: 'Look for patterns in the results and decide whether the evidence supports your hypothesis.'
+      },
+      results_yes: {
+        title: 'Results Align with Hypothesis',
+        text: 'Your evidence supports the hypothesis, so you can explain the findings and communicate them clearly.'
+      },
+      results_partial: {
+        title: 'Results Align Partially or Not at All with Hypothesis',
+        text: 'Your results may suggest that the hypothesis should be improved, changed, or replaced.'
+      },
+      loop: {
+        title: 'Future Investigation Loop',
+        text: 'Experimental data can become background research for a future project. Ask a new question, form a new hypothesis, and experiment again.'
+      },
+      communicate: {
+        title: 'Communicate Results',
+        text: 'Present your findings clearly and explain what you discovered from your investigation.'
+      }
+    };
+
+    let posterCurrentKey = null;
+    let posterShowingTranslation = false;
+    let posterSpeechActive = false;
+
+    function stopPosterSpeech() {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      posterSpeechActive = false;
+      const readBtn = document.getElementById('posterReadToggleBtn');
+      if (readBtn) readBtn.textContent = '🔊 Read';
+    }
+
+    function speakPosterText(text) {
+      stopPosterSpeech();
+      if (!('speechSynthesis' in window)) return;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'en-US';
+      utterance.rate = appState.readingRate;
+      const voice = chooseVoice();
+      if (voice) utterance.voice = voice;
+      posterSpeechActive = true;
+      const btn = document.getElementById('posterReadToggleBtn');
+      if (btn) btn.textContent = '⏹ Stop';
+      utterance.onend = () => {
+        posterSpeechActive = false;
+        const b = document.getElementById('posterReadToggleBtn');
+        if (b) b.textContent = '🔊 Read';
+      };
+      utterance.onerror = () => {
+        posterSpeechActive = false;
+        const b = document.getElementById('posterReadToggleBtn');
+        if (b) b.textContent = '🔊 Read';
+      };
+      speechSynthesis.speak(utterance);
+    }
+
+    async function togglePosterTranslation() {
+      const item = posterContent[posterCurrentKey];
+      const textEl = document.getElementById('posterPopupText');
+      const btn = document.getElementById('posterTranslateToggleBtn');
+      if (!item || !textEl || !btn) return;
+      if (!posterShowingTranslation) {
+        btn.textContent = 'Translating...';
+        const translated = await translateWord(item.text, appState.language);
+        textEl.textContent = translated || item.text;
+        btn.textContent = 'Show original';
+        posterShowingTranslation = true;
+      } else {
+        textEl.textContent = item.text;
+        btn.textContent = '🌍 Translate';
+        posterShowingTranslation = false;
+      }
+    }
+
+    function openPosterPopup(key) {
+      posterCurrentKey = key;
+      posterShowingTranslation = false;
+      stopPosterSpeech();
+      const item = posterContent[key];
+      if (!item) return;
+      posterPopup.innerHTML = `
+        <div class="poster-popup-top">
+          <h3>${item.title}</h3>
+          <button class="btn btn-secondary close-btn" id="posterClosePopupBtn">×</button>
+        </div>
+        <p id="posterPopupText">${item.text}</p>
+        <div class="poster-popup-actions">
+          <button class="btn btn-primary" id="posterReadToggleBtn">🔊 Read</button>
+          <button class="btn btn-secondary" id="posterTranslateToggleBtn">🌍 Translate</button>
+        </div>
+      `;
+      posterPopup.style.display = 'block';
+      posterOverlay.style.display = 'block';
+      document.getElementById('posterClosePopupBtn').onclick = closePosterPopup;
+      document.getElementById('posterReadToggleBtn').onclick = () => {
+        const text = document.getElementById('posterPopupText').textContent;
+        if (!posterSpeechActive) {
+          speakPosterText(text);
+        } else {
+          stopPosterSpeech();
+        }
+      };
+      document.getElementById('posterTranslateToggleBtn').onclick = togglePosterTranslation;
+    }
+
+    function closePosterPopup() {
+      posterPopup.style.display = 'none';
+      posterOverlay.style.display = 'none';
+      stopPosterSpeech();
+    }
+
+    function initPosterModule() {
+      document.querySelectorAll('.poster-hotspot').forEach(btn => {
+        btn.addEventListener('click', () => openPosterPopup(btn.dataset.key));
+      });
+      if (posterOverlay) posterOverlay.addEventListener('click', closePosterPopup);
+    }
+
     function applyAll() {
       applyTheme();
       renderChapterText();
@@ -1268,6 +1600,7 @@
       if (!insidePopup && !clickedWord) closePopup();
     });
 
+    initPosterModule();
     loadSettings();
     syncForm();
     applyTheme();
