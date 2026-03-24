@@ -692,7 +692,18 @@
       font-size: 14px;
       line-height: 1.4;
       user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+      touch-action: manipulation;
       max-width: 270px;
+      transition: 0.18s ease;
+    }
+    .card-word.selected-card {
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+      background: var(--task-soft);
+      transform: scale(1.02);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.10);
     }
     .controls {
       display: flex;
@@ -1641,32 +1652,107 @@
     function initExerciseTranslations() { document.querySelectorAll('.translate-btn').forEach(btn => btn.addEventListener('click', () => toggleTranslateElements(btn))); }
 
     let draggedCard = null;
+    let selectedCard = null;
     function getCardAnswer(card) { return card.dataset.type || card.dataset.label || card.dataset.word || ''; }
+
+    function clearSelectedCards() {
+      document.querySelectorAll('.card-word.selected-card').forEach(card => card.classList.remove('selected-card'));
+      selectedCard = null;
+    }
+
+    function getTaskBankForElement(el) {
+      const parentTask = el.closest('.tab-content');
+      if (!parentTask) return null;
+      return parentTask.querySelector('.word-bank');
+    }
+
+    function updateFilledState(taskElement) {
+      if (!taskElement) return;
+      taskElement.querySelectorAll('.dropzone').forEach(zone => {
+        if (zone.firstElementChild) zone.classList.add('filled');
+        else zone.classList.remove('filled');
+      });
+    }
+
+    function moveCardToZone(card, zone) {
+      if (!card || !zone) return;
+      if (zone.firstElementChild) {
+        const old = zone.firstElementChild;
+        const bank = getTaskBankForElement(zone);
+        if (bank) bank.appendChild(old);
+      }
+      zone.appendChild(card);
+      updateFilledState(zone.closest('.tab-content'));
+    }
+
+    function moveCardToBank(card, bank) {
+      if (!card || !bank) return;
+      bank.appendChild(card);
+      updateFilledState(bank.closest('.tab-content'));
+    }
+
     function attachDragEvents() {
       document.querySelectorAll('.card-word').forEach(card => {
         card.addEventListener('dragstart', () => { draggedCard = card; });
         card.addEventListener('dragend', () => { draggedCard = null; });
+
+        card.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (selectedCard === card) {
+            clearSelectedCards();
+            return;
+          }
+          clearSelectedCards();
+          selectedCard = card;
+          card.classList.add('selected-card');
+        });
+
+        card.addEventListener('touchstart', () => {
+          draggedCard = card;
+        }, { passive: true });
       });
+
       document.querySelectorAll('.dropzone, .fillblank').forEach(zone => {
         zone.addEventListener('dragover', e => e.preventDefault());
         zone.addEventListener('drop', e => {
           e.preventDefault();
           if (!draggedCard) return;
-          if (zone.firstElementChild) {
-            const old = zone.firstElementChild;
-            const parentTask = zone.closest('.tab-content');
-            const bank = parentTask.querySelector('.word-bank');
-            if (bank) bank.appendChild(old);
-          }
-          zone.appendChild(draggedCard);
-          if (zone.classList.contains('dropzone')) zone.classList.add('filled');
+          moveCardToZone(draggedCard, zone);
+          draggedCard = null;
+          clearSelectedCards();
+        });
+
+        zone.addEventListener('click', e => {
+          e.stopPropagation();
+          if (!selectedCard) return;
+          moveCardToZone(selectedCard, zone);
+          clearSelectedCards();
         });
       });
+
       document.querySelectorAll('.word-bank').forEach(bank => {
         bank.addEventListener('dragover', e => e.preventDefault());
-        bank.addEventListener('drop', e => { e.preventDefault(); if (draggedCard) bank.appendChild(draggedCard); });
+        bank.addEventListener('drop', e => {
+          e.preventDefault();
+          if (!draggedCard) return;
+          moveCardToBank(draggedCard, bank);
+          draggedCard = null;
+          clearSelectedCards();
+        });
+
+        bank.addEventListener('click', () => {
+          if (!selectedCard) return;
+          moveCardToBank(selectedCard, bank);
+          clearSelectedCards();
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        const clickedInsideExercise = e.target.closest('.exercise-module');
+        if (!clickedInsideExercise) clearSelectedCards();
       });
     }
+
     function checkAnswers(taskId) {
       const task = document.getElementById(taskId);
       task.querySelectorAll('.dropzone').forEach(zone => {
