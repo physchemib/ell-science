@@ -1389,7 +1389,7 @@
           <label for="languageSelect">Support language</label>
           <select id="languageSelect">
             <option value="ru">Russian</option>
-            <option value="zh">Mandarin Chinese</option>
+            <option value="zh">Chinese</option>
             <option value="ja">Japanese</option>
             <option value="ar">Arabic</option>
             <option value="he">Hebrew</option>
@@ -1453,7 +1453,7 @@
           <label for="quickLanguageSelect">Support language</label>
           <select id="quickLanguageSelect">
             <option value="ru">Russian</option>
-            <option value="zh">Mandarin Chinese</option>
+            <option value="zh">Chinese</option>
             <option value="ja">Japanese</option>
             <option value="ar">Arabic</option>
             <option value="he">Hebrew</option>
@@ -1608,7 +1608,7 @@
     };
 
     const appState = { language: 'ru', level: 'beginner', voicePreference: 'default', theme: 'light', isReading: false, selectedParagraphId: '', fontScale: 1, readingRate: 1, myWords: [] };
-    const languageNames = { ru: 'Russian', zh: 'Mandarin Chinese', ja: 'Japanese', ar: 'Arabic', he: 'Hebrew', uk: 'Ukrainian', es: 'Spanish' };
+    const languageNames = { ru: 'Russian', zh: 'Chinese', ja: 'Japanese', ar: 'Arabic', he: 'Hebrew', uk: 'Ukrainian', es: 'Spanish' };
     const levelNames = { beginner: 'Elementary', intermediate: 'Intermediate', advanced: 'Advanced' };
     const rtlLanguages = new Set(['ar', 'he']);
 
@@ -2165,20 +2165,91 @@
     }
 
     const posterContent = {
-      question: { title: 'Ask a Question', text: 'Start with something you notice and turn it into a clear question that you want to investigate.' },
-      research: { title: 'Do Background Research', text: 'Find useful information so you understand the topic better before you plan your investigation.' },
-      hypothesis: { title: 'Construct a Hypothesis', text: 'Write a possible explanation or prediction based on what you already know.' },
-      experiment: { title: 'Test with an Experiment', text: 'Carry out a fair test, follow the method carefully, and collect evidence.' },
-      procedure: { title: 'Check the Procedure', text: 'Check your method and ask: Do the steps make sense? Can you follow them clearly? Can you collect reliable results?' },
-      no: { title: 'No', text: 'If the procedure does not work, find the problem, fix the method, and try again.' },
-      yes: { title: 'Yes', text: 'If the procedure works, continue the investigation and move on to analyse the data.' },
-      troubleshoot: { title: 'Troubleshoot Procedure', text: 'Check each step, inspect the equipment, review the measurements, and make sure you control the variables.' },
-      analyse: { title: 'Analyse Data and Draw Conclusions', text: 'Look for patterns in the results and decide whether the evidence supports your hypothesis.' },
-      results_yes: { title: 'Results Align with Hypothesis', text: 'If your evidence supports the hypothesis, explain the findings clearly and share what you learned.' },
-      results_partial: { title: 'Results Align Partially or Not at All with Hypothesis', text: 'If your results do not fully support the hypothesis, change the idea, improve it, or write a new one.' },
-      loop: { title: 'Future Investigation Loop', text: 'Use your results as background research for a new investigation. Ask a new question, write a new hypothesis, and test it again.' },
-      communicate: { title: 'Communicate Results', text: 'Present your findings clearly and explain what you discovered from your investigation.' }
+      question: {
+        title: 'Ask a Question',
+        beginner: 'Start with something you notice and turn it into a clear question you want to investigate.',
+        intermediate: 'Begin with an observation and write a focused scientific question that can be investigated.',
+        advanced: 'Use an initial observation to formulate a precise, testable research question for the investigation.'
+      },
+      procedure: {
+        title: 'Check the Procedure',
+        beginner: 'Check that the steps are clear, safe, and easy to follow before you begin.',
+        intermediate: 'Review the method to make sure the steps are logical, clear, and likely to produce useful results.',
+        advanced: 'Evaluate whether the procedure is coherent, repeatable, and capable of generating reliable and valid data.'
+      },
+      research: {
+        title: 'Do Background Research',
+        beginner: 'Find simple information about the topic so you understand it better before testing.',
+        intermediate: 'Collect background information from reliable sources to help you understand the topic and plan the investigation.',
+        advanced: 'Gather relevant scientific background from appropriate sources to refine the question and inform the experimental design.'
+      },
+      hypothesis: {
+        title: 'Construct a Hypothesis',
+        beginner: 'Write a possible explanation or idea that you can test.',
+        intermediate: 'Develop a testable explanation or prediction based on your background knowledge and observations.',
+        advanced: 'Formulate a reasoned, testable hypothesis grounded in scientific understanding and prior research.'
+      },
+      experiment: {
+        title: 'Test with an Experiment',
+        beginner: 'Carry out the test carefully and collect results.',
+        intermediate: 'Perform a fair test, follow the method carefully, and record observations and measurements.',
+        advanced: 'Conduct a controlled investigation, collect appropriate data, and maintain consistency in the experimental method.'
+      },
+      no: {
+        title: 'No',
+        beginner: 'If the plan does not work, fix the problem and try again.',
+        intermediate: 'If the method is not working well, identify the weakness, improve the procedure, and repeat the test.',
+        advanced: 'If the procedure is flawed or impractical, revise the design, address limitations, and retest the investigation.'
+      },
+      yes: {
+        title: 'Yes',
+        beginner: 'If the method works, continue and study the data.',
+        intermediate: 'If the procedure is suitable, carry on with the investigation and then analyse the collected evidence.',
+        advanced: 'If the procedure is effective, proceed with the investigation and move forward to systematic data analysis.'
+      },
+      troubleshoot: {
+        title: 'Troubleshoot Procedure',
+        beginner: 'Check the steps, tools, and measurements to see what needs fixing.',
+        intermediate: 'Review the equipment, variables, and method carefully to identify possible errors or unclear steps.',
+        advanced: 'Critically inspect the procedure, controls, equipment, and variables to locate sources of error or weak design.'
+      },
+      analyse: {
+        title: 'Analyse Data and Draw Conclusions',
+        beginner: 'Look at the results and decide what they show.',
+        intermediate: 'Study the results for patterns and decide whether the evidence supports the hypothesis.',
+        advanced: 'Analyse the data systematically, identify trends or anomalies, and evaluate the extent to which the evidence supports the hypothesis.'
+      },
+      results_yes: {
+        title: 'Results Align with Hypothesis',
+        beginner: 'If the results support your idea, explain what you learned.',
+        intermediate: 'If the evidence supports the hypothesis, explain the findings clearly and connect them to the question.',
+        advanced: 'If the results are consistent with the hypothesis, justify the conclusion using the analysed evidence and scientific reasoning.'
+      },
+      results_partial: {
+        title: 'Results Align Partially or Not at All with Hypothesis',
+        beginner: 'If the results do not match, change or improve the idea.',
+        intermediate: 'If the evidence does not fully support the hypothesis, revise the explanation or improve the investigation.',
+        advanced: 'If the findings only partially support or contradict the hypothesis, refine the hypothesis and consider methodological improvements.'
+      },
+      loop: {
+        title: 'Future Investigation Loop',
+        beginner: 'Use what you learned to ask a new question and test again.',
+        intermediate: 'Use your results to plan a new question, improved hypothesis, or follow-up investigation.',
+        advanced: 'Use the conclusions and limitations of the current investigation to generate further research questions and improved experimental designs.'
+      },
+      communicate: {
+        title: 'Communicate Results',
+        beginner: 'Share what you did and what you found.',
+        intermediate: 'Present your method, results, and conclusion clearly so others can understand your investigation.',
+        advanced: 'Communicate the investigation clearly by presenting the method, evidence, analysis, and conclusion in a scientifically organised way.'
+      }
     };
+
+    function getPosterLevelText(key) {
+      const item = posterContent[key];
+      if (!item) return '';
+      return item[appState.level] || item.intermediate || '';
+    }
 
     let posterCurrentKey = null;
     let posterShowingTranslation = false;
@@ -2226,14 +2297,16 @@
       const btn = document.getElementById('posterTranslateToggleBtn');
       if (!item || !textEl || !btn) return;
 
+      const englishText = getPosterLevelText(posterCurrentKey);
+
       if (!posterShowingTranslation) {
         btn.textContent = 'Translating...';
-        const translated = await translateWord(item.text, appState.language);
-        textEl.textContent = translated || item.text;
-        btn.textContent = 'Show original';
+        const translated = await translateWord(englishText, appState.language);
+        textEl.textContent = translated || englishText;
+        btn.textContent = 'Show English';
         posterShowingTranslation = true;
       } else {
-        textEl.textContent = item.text;
+        textEl.textContent = englishText;
         btn.textContent = '🌍 Translate';
         posterShowingTranslation = false;
       }
@@ -2246,12 +2319,14 @@
       const item = posterContent[key];
       if (!item) return;
 
+      const englishText = getPosterLevelText(key);
+
       posterPopup.innerHTML = `
         <div class="poster-popup-top">
           <h3>${item.title}</h3>
           <button class="btn btn-secondary close-btn" id="posterClosePopupBtn">×</button>
         </div>
-        <p id="posterPopupText">${item.text}</p>
+        <p id="posterPopupText">${englishText}</p>
         <div class="poster-popup-actions">
           <button class="btn btn-primary" id="posterReadToggleBtn">🔊 Read</button>
           <button class="btn btn-secondary" id="posterTranslateToggleBtn">🌍 Translate</button>
@@ -2268,6 +2343,12 @@
         else stopPosterSpeech();
       };
       document.getElementById('posterTranslateToggleBtn').onclick = togglePosterTranslation;
+    }
+
+    function refreshPosterPopupIfOpen() {
+      if (posterPopup.style.display === 'block' && posterCurrentKey) {
+        openPosterPopup(posterCurrentKey);
+      }
     }
 
     function closePosterPopup() {
@@ -2558,7 +2639,7 @@
           box.textContent = translated || 'Translation unavailable.';
           if (rtlLanguages.has(appState.language)) box.classList.add('rtl');
           else box.classList.remove('rtl');
-          e.currentTarget.textContent = 'Show English only';
+          e.currentTarget.textContent = 'Show English';
         } else {
           box.classList.add('hidden');
           e.currentTarget.textContent = 'Translate';
@@ -2576,6 +2657,8 @@
       applyFontScale();
       syncQuickSettings();
       updateReadButton();
+      refreshPosterPopupIfOpen();
+      if (currentCommandTerm) showCommandTerm(currentCommandTerm);
       saveSettings();
     }
 
